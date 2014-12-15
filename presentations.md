@@ -1,14 +1,10 @@
-# TOR
-
 % Anonymity attacks on TOR 2013-2014 
 % A & A
 % December 2014
 
+# What is TOR
 
-
-## What is TOR
-
-### Tor == **The Onion Router**
+## Tor == **The Onion Router**
 
 - It is designed to provide anonymity for internet users.
     - Originally funded by the US Navy.
@@ -23,7 +19,7 @@
     - The exit node gets to see the destination request.
     - The relay node only sees an encrypted routing request between the entrance and exit.
 
-## Tor Client 2
+# Tor Client 2
 
 - Not always possible to join the tor network 
     - As directory information is public the entry nodes can be blocked.
@@ -36,7 +32,7 @@ Enhancement
     - proxy services that can be used to obfuscate tor traffic, evading DPI
 
 
-## Tor Hidden Services
+# Tor Hidden Services
 
 - Provide anonymity for service providers
     - eg. Web publishing, instant messaging services
@@ -46,41 +42,41 @@ Enhancement
     - onion addresses both verify and secure the hidden node address.
 - Onion addresses are not resolvable outside the tor network
 
-## Deanonymisation of tor client users
+# Deanonymisation of tor client users
 
-### Tor Clients
+## Tor Clients
 
 - Student caught as tor users on wifi....
 
 
-### Evil exit node ?
+## Evil exit node ?
 
 - Freedom hosting
 
-### Bad comsec
+## Bad comsec
 
 - Not using the tor browser bundle ??
 
-### third party software
+## third party software
 
 - TAILS and i2p
 
 
 
-## Deanonymisation of tor hidden services
+# Deanonymisation of tor hidden services
 
-### bad software
+## bad software
 
 - captcha on silkroad
     - discussion whether is the case or something else ( NSA )
 
-### Attacks on Tor
+## Attacks on Tor
 
 - Hidden service attacks
 
 
 
-## Conclusion
+# Conclusion
 
 - Anonymity is hard
 - Best practices
