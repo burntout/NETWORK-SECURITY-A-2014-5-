@@ -3,7 +3,7 @@
 
 ## What is TOR
 
-### Tor stands for **The Onion Router**
+### Tor == **The Onion Router**
 
 - It is designed to provide anonymity for internet users.
     - Originally funded by the US Navy.
