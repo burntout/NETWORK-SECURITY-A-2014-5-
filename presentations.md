@@ -1,5 +1,5 @@
 % Anonymity attacks on TOR 2013-2014 
-% A & A
+% Aditya Damodaran and Alan Dawson
 % December 2014
 
 # What is TOR
@@ -44,45 +44,78 @@ Enhancement
 
 # Deanonymisation of tor client users
 
-## Tor Clients
+- Various attacks known in the press.
+- We present some in chronological order.
 
-- Student caught as tor users on wifi....
+# Freedom Hosting July-August 2013
+
+- Running turnkey tor hidden services out of a French commercial hosting provider.
+- Users of these hidden services included hosting of child pornography.
+- FBI took control of these hidden services on July 2013.
+- August 4th 2013, all sites hosted by Freedom Hosting began serving an error message with javascript iframe code embedded in the page.
+- This exploited a vulnerability in version of Firefox primarily used by Tor users, and caused their computers to make a connection back to a server in the US, with information about their identities (eg. MAC Address, IP Address )
+
+# Freedom Hosting - 2 
+
+- How were the hidden services exploited.
+    - Likely not an exploit in tor, but an exploit in the web applications    - This would have de-anonymised some of the Freedom Hosting systems.
+    - Additional ones would have been discovered by records from the French hosting company.
+
+# Silk Road - September 2013
+
+- Silk Road, Tor hidden service providing a market place for drugs.
+- IP address discover from a Captcha
+    - "the two agents entered “miscellaneous” data into its login page and found that its CAPTCHA, ... was loading from an address not connected to any Tor “node,”"
+- Likely that this was a reconnaissance attack, or fuzzing attack on the Silk Road application. This may have caused the server to output PHP debugging information, which revealed it's actual IP address.
+
+# Harvard Bomb Threat -  December 2013
+
+- A Harvard student used Tor to send a bomb threat to his university in order to avoid taking a test.
+-  FBI used logs of the campus wireless network traffic to determine when and where a user accessed the Tor service, ultimately allowing them to trace the webmail activity back to the student
+- The outgoing Tor traffic may have triggered an IDS rule to log packets, or network administrators may have been logging all outgoing traffic.
+- This Tor usage may have coincided with the delivery times of email threats.
+- This will have been combined with standard policing procedures; who would have had motive, to find a suspect.
+
+# Relay Early Traffic Confirmation Attack
+
+<https://blog.torproject.org/blog/tor-security-advisory-relay-early-traffic-confirmation-attack>
+
+- Technical attack on Tor Hidden Services
+- Motives were uncertain.
+- Details
+    - Compromised Tor node inject a signal value, 
+    - These contains an encrypted unique identifier
+    - Injected into a Tor request headers
+    - Can be used to identify locations of hidden services
+    - Can be used it identify users
 
 
-## Evil exit node ?
 
-- Freedom hosting
+# Operation Onymous - November 2014
 
-## Bad comsec
-
-- Not using the tor browser bundle ??
-
-## third party software
-
-- TAILS and i2p
+- Silk Road 2 taken down
+- Various other Tor hidden services affected
+- Technique not known.
+    - Probably bad OpSec by users.
+    - Possibly from "Relay Early Traffic Attack" ( from previous slide )
 
 
+# Conclusion - Client privacy
 
-# Deanonymisation of tor hidden services
+- Anonymity is hard, against a determined adversary.
+- Best practices - Clients
+    - Dont run arbitrary code in your tor browser ( eg. disable java script/flash )
+    - Dont run windows
+    - Use the latest Tor Browser Bundle package
+    - Use a dedicated virtual machine or operating system ( eg. Whonix, Tails )
+        - Force all traffic to be "torified"
 
-## bad software
+# Conclusion - Hidden node privacy.
 
-- captcha on silkroad
-    - discussion whether is the case or something else ( NSA )
-
-## Attacks on Tor
-
-- Hidden service attacks
-
-
-
-# Conclusion
-
-- Anonymity is hard
-- Best practices
-    - ??? TAILS ???
-    - TBB
-    - maintain separation of contextual identities
+- Best practices - Hidden Service Operators
+    - Run a secure code.
+    - Dont leave debug statements on live systems.
+    - Take servers off line when performing maintenance
 
 
 
