@@ -1,5 +1,10 @@
 # TOR
 
+% Anonymity attacks on TOR 2013-2014 
+% A & A
+% December 2014
+
+
 
 ## What is TOR
 
@@ -15,6 +20,8 @@
     - The exit node gets to see the destination request.
     - The relay node only sees an encrypted routing request between the entrance and exit.
 
+
+## 
 
 
 
