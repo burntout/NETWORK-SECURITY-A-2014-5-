@@ -42,6 +42,18 @@ As the DA are geographically diversely located in different legal regimes it wou
 
 # Tor hidden services
 
-Tor hidden services allow a service operator to anonymise the location of the service.
+Tor hidden services allow a service operator to anonymise the location of the service. In standard use of tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-For a client to connect to a Tor hi
+
+## Tor hidden service protocol
+
+The hidden service builds a tor circuit to a number of "introduction points" (IP).  The IP publish information about the hidden service into a distribited hash table, shared amongs special tor nodes known as HSDir ( Hidden Service Directories ).
+
+When a client wishes to connect to a hidden service, it performs several tasks, all across tor circuits.
+
+1. looks up the IP and public key info for the hidden service from a HSDir server. 
+1. Chooses an OR to be a Rendezvous Point (RP )
+1. Asks the IP to contact the hidden service and tell it the RP
+1. The HS makes a tor circuit to the RP
+1. The client makes a circuit to the RP
+
