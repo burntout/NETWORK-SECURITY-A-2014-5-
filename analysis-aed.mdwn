@@ -1,0 +1,47 @@
+% Deanonymisation attacks on the TOR network 2013-2014
+% Alan Dawson
+% December 2014
+
+# Tor
+
+Tor is an anonymisation platform for network traffic.
+
+# How does it work
+
+The TOR client, known as a an Onion Proxy (OP) bootstraps itself at startup. This involves the following stages:- 
+
+- The OP contacts the TOR Directory Authorities (DA), and downloads a list of the currently available TOR relays (OR) together with their exit node policies, public keys and other information.  
+- The OP selects an exit node, that is suitable for the traffic it wants to send.
+- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, and entrance and relay node.
+- The OP creates a circuit to the entrance node.
+- The OP extends the circuit to the relay, and from there extends it to the exit node.
+
+In this way OP builds a circuit across 3 OR.  Each OR is only aware of the previous hop and destination hop
+
+# Attacks on Tor Clients
+
+## Evil exit node
+
+Unless the traffic from the destination is authenticated then an evil exit node can insert or alter any responses from the destination to the client. Examples of authenticated traffic are: 
+
+- https traffic with certificate verification. This will provide end to end authentication for 
+- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel
+
+
+Example of unauthenticated traffic are
+## Tor browser bundle exploit
+
+## Directory Authorities  compromise
+
+The TOR network has 10 Directory Authorities. These contain a list of the currently active TOR routers, and other information that is required for a OP to bootstrap a circuit.  These Directory Authorities are hardcoded into the TOR client. They are updated hourly, and build a consensus over the state of the TOR network.  9 of these DA act for the general TOR client, and one acts for TOR bridges.
+
+If 5 of the DA's were taken over, then an attacker could control the view of the TOR network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise TOR users.
+
+As the DA are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
+
+
+# Tor hidden services
+
+Tor hidden services allow a service operator to anonymise the location of the service.
+
+For a client to connect to a Tor hi
