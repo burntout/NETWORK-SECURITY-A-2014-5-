@@ -1,4 +1,4 @@
-% Deanonymisation attacks on the TOR network 2013-2014
+% Deanonymisation attacks on the Tor network 2013-2014
 % Alan Dawson
 % December 2014
 
@@ -12,12 +12,12 @@ Tor is a low latency anonymisation  and privacy platform for network traffic.
 
 # How does it work
 
-The TOR client, known as a an Onion Proxy (OP) bootstraps itself at startup. This involves the following stages:- 
+The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. This involves the following stages:- 
 
-- The OP contacts the TOR Directory Authorities (DA), and downloads a list of the currently available TOR relays (OR) together with their exit node policies, public keys and other information.  
+- The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
-- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, and entrance ( or Guard Node ) and relay node.
-- The OP creates a circuit to the entrance node.
+- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance ( known as a Guard Node ) and a relay node.
+- The OP creates a circuit to the guard node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
 In this way OP builds a circuit across 3 OR.  Each OR is only aware of the previous hop and destination hop
@@ -35,41 +35,51 @@ Examples of unauthenticated traffic would include browsing over http, the use of
 
 ## Tor browser bundle exploit
 
-A common error for users is to use the same browser on the tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  To prevent this the Tor project produces a customised version of the Firefox browser which has scripting, plugins, and cookies disabled.  This is known as the Tor Browser Bundle.
+A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  To prevent this the Tor project produces a customised version of the Firefox browser which has scripting, plugins, and cookies disabled.  This is known as the Tor Browser Bundle.
 
 This customised verion of Firefox is vulnerable though to any exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the TBB up to date.
 
 
 ## Directory Authorities  compromise
 
-The TOR network has 10 Directory Authorities. These contain a list of the currently active TOR routers, and other information that is required for a OP to bootstrap a circuit.  These Directory Authorities are hardcoded into the TOR client. They are updated hourly, and build a consensus over the state of the TOR network.  9 of these DA act for the general TOR client, and one acts for TOR bridges.
+The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor routers, and other information that is required for a OP to bootstrap a circuit.  These Directory Authorities are hardcoded into the Tor client. They are updated hourly, and build a consensus over the state of the Tor network.  9 of these DA act for the general Tor client, and one acts for Tor bridges.
 
-If 5 of the DA's were taken over, then an attacker could control the view of the TOR network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise TOR users.
+If 5 of the DA's were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise Tor users.
 
 As the DA are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
 
 
 # Tor hidden services
 
-Tor hidden services allow a service operator to anonymise the location of the service. In standard use of tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
+Tor hidden services allow a service operartor to anonymise the location of the service. In standard use of Tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
 Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, or ....
 
-The onion address is 80bit hash of the public key associated with the tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] )
+The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] )
 
 
 ## Tor hidden service protocol
 
-The hidden service builds a tor circuit to a number of "introduction points" (IP).  The IP publish information about the hidden service into a distribited hash table, shared amongs special tor nodes known as HSDir ( Hidden Service Directories ).
+The hidden service builds a Tor circuit to a number of "introduction points" (IP).  The IP publish information about the hidden service into a distribited hash table, shared amongs special Tor nodes known as HSDir ( Hidden Service Directories ).
 
-When a client wishes to connect to a hidden service, it performs several tasks, all across tor circuits.
+When a client wishes to connect to a hidden service, it performs several tasks, all across Tor circuits.
 
 1. looks up the IP and public key info for the hidden service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
 1. Asks the IP to contact the hidden service and tell it the RP
-1. The HS makes a tor circuit to the RP
+1. The HS makes a Tor circuit to the RP
 1. The client makes a circuit to the RP
 
 ## Attacks on Tor hidden services
 
 
+# How these attacks are used against Tor users
 
+## Freedom Hosting 
+
+## Silk Road
+
+## Harvard Bomb Threat
+
+## Relay Early 
+
+## Operation Onymous / Silk Road 2
