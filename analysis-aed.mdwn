@@ -4,7 +4,11 @@
 
 # Tor
 
-Tor is an anonymisation platform for network traffic.
+Tor is a low latency anonymisation  and privacy platform for network traffic.  
+
+- Low latency, in that it's usable for everyday browsing. 
+- Anonymisation in that it seeks to prevent network operators identifying the source of traffic.
+- Privacy in that it seeks to prevent network operators identifying the content of traffic.
 
 # How does it work
 
@@ -12,7 +16,7 @@ The TOR client, known as a an Onion Proxy (OP) bootstraps itself at startup. Thi
 
 - The OP contacts the TOR Directory Authorities (DA), and downloads a list of the currently available TOR relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
-- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, and entrance and relay node.
+- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, and entrance ( or Guard Node ) and relay node.
 - The OP creates a circuit to the entrance node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
@@ -24,12 +28,17 @@ In this way OP builds a circuit across 3 OR.  Each OR is only aware of the previ
 
 Unless the traffic from the destination is authenticated then an evil exit node can insert or alter any responses from the destination to the client. Examples of authenticated traffic are: 
 
-- https traffic with certificate verification. This will provide end to end authentication for 
-- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel
+- https traffic with certificate verification. This will provide end to end authentication and encryption of destination to the client
+- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel.  This would allow the exit node to see the traffic still, but the client would be able to tell verify the content.  Examples of this would be the downloading of packages from Windows Update.  The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
 
+Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and  Window Live Messenger.
 
-Example of unauthenticated traffic are
 ## Tor browser bundle exploit
+
+A common error for users is to use the same browser on the tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  To prevent this the Tor project produces a customised version of the Firefox browser which has scripting, plugins, and cookies disabled.  This is known as the Tor Browser Bundle.
+
+This customised verion of Firefox is vulnerable though to any exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the TBB up to date.
+
 
 ## Directory Authorities  compromise
 
@@ -44,6 +53,10 @@ As the DA are geographically diversely located in different legal regimes it wou
 
 Tor hidden services allow a service operator to anonymise the location of the service. In standard use of tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
+Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, or ....
+
+The onion address is 80bit hash of the public key associated with the tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] )
+
 
 ## Tor hidden service protocol
 
@@ -51,9 +64,12 @@ The hidden service builds a tor circuit to a number of "introduction points" (IP
 
 When a client wishes to connect to a hidden service, it performs several tasks, all across tor circuits.
 
-1. looks up the IP and public key info for the hidden service from a HSDir server. 
-1. Chooses an OR to be a Rendezvous Point (RP )
+1. looks up the IP and public key info for the hidden service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
 1. Asks the IP to contact the hidden service and tell it the RP
 1. The HS makes a tor circuit to the RP
 1. The client makes a circuit to the RP
+
+## Attacks on Tor hidden services
+
+
 
