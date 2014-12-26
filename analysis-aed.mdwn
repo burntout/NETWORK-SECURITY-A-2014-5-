@@ -16,7 +16,7 @@ The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. Thi
 
 - The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
-- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance ( known as a Guard Node ) and a relay node.
+- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance, known as a Guard Node, and a relay node.
 - The OP creates a circuit to the guard node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
@@ -53,7 +53,7 @@ As the DA are geographically diversely located in different legal regimes it wou
 
 Tor hidden services allow a service operartor to anonymise the location of the service. In standard use of Tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, or ....
+Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, http://tnysbtbxsf356hiy.onion
 
 The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] )
 
@@ -75,6 +75,12 @@ When a client wishes to connect to a hidden service, it performs several tasks, 
 # How these attacks are used against Tor users
 
 ## Freedom Hosting 
+
+Freedom hosting was company that offered a turnkey tor hidden service hosting. In August 2013 a large number of Tor hidden services hosted by Freedom hosting stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in the particular version of Firefox that the Tor Browser Bundle used at that time.  
+
+The vulnerability has been extensively analysed by Dr Gareth Ownen at Portsmouth University "https://ghowen.me/fbi-tor-malware-analysis/"   "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
+
+
 
 ## Silk Road
 
