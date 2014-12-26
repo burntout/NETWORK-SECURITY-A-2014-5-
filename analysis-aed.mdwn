@@ -80,6 +80,8 @@ Freedom hosting was company that offered a turnkey tor hidden service hosting. I
 
 The vulnerability has been extensively analysed by Dr Gareth Ownen at Portsmouth University "https://ghowen.me/fbi-tor-malware-analysis/"   "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
 
+The exploit though is interesting as it records the computer windows hostname, the local IP address of the  computer, and the computers ethernet MAC address. This was encoded into an HTTP request to an IP address in Virginia USA
+
 
 
 ## Silk Road
