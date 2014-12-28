@@ -54,16 +54,16 @@ To prevent this the Tor project produces a customised version of the Firefox bro
 
 The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor relays, and other information that is required for an OP to bootstrap a circuit.  The directory authorities are hardcoded into the Tor client, they're updated hourly, and build a consensus over the state of the Tor network. Nine of these directory authorities act for the general Tor client, and one acts for Tor bridges.
 
-If 5 of the DA's were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise Tor users.
+If 5 of the directory authorities were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits where the nodes are all controlled by the attacker.  This would deanonymise Tor users.
 
-As the DA are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network>.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
+As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network>.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
 
 
 # Tor hidden services
 
 Tor hidden services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example facebook publish <https://facebookcorewwwi.onion>, and the duckduckgo search engine at publishes <http://3g2upl4pq6kufc4m.onion> 
+Hidden services are published as ".onion" addresses.  For example facebook publish <https://facebookcorewwwi.onion>, and the duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
 
 The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
