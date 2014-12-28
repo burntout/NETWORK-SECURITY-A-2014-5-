@@ -127,9 +127,9 @@ Various steps would have prevented users from being deanonymised, these include.
 
 On 16 December 2013 Harvard University received a bomb threat via the <https://www.guerrillamail.com> email provider. Shortly afterwords a Harvard student was charged. He had used the university wireless network to connect to the Tor network and send the email. Whilst the full details of his deanonymisation are not available some features stand out.
 
-1. The subject authenticated against the university wireless network
-1. It's common on public and authenticated wireless networks to have a high level of logging of source  and destination IP addresses and ports
-1. Email often contains information regarding sending IP addresses and times in header information
+- The subject authenticated against the university wireless network
+- It's common on public and authenticated wireless networks to have a high level of logging of source  and destination IP addresses and ports 
+- Email often contains information regarding sending IP addresses and times in header information
 
 ### Example email header from  https://www.guerrillamail.com
 
