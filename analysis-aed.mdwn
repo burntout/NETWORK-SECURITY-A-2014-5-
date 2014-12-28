@@ -22,7 +22,7 @@ The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. Thi
 
 In this way OP builds a circuit across 3 OR.  Each OR is only aware of the previous hop and destination hop.  
 
-In practice a OP will buil several circuits, with various relay and exit nodes, but will keep the same guard node ( entrance ) for extended periods of time.
+In practice a OP will build several circuits, with various relay and exit nodes, but will keep the same guard node ( entrance ) for extended periods of time.
 
 # Attacks on Tor Clients
 
@@ -45,14 +45,14 @@ If an attacker can track data entering and exiting the Tor network they can use 
 
 ## Tor browser bundle exploit
 
-A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  To prevent this the Tor project produces a customised version of the Firefox browser which has scripting, plugins, and cookies disabled.  This is known as the Tor Browser Bundle.
+A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  
 
-This customised verion of Firefox is vulnerable though to any exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the TBB up to date.
+To prevent this the Tor project produces a customised version of the Firefox browser, known as the Tor Browser Bundle, which has most plugins, and cookies disabled. This customised verion of Firefox is vulnerable to similar exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the Tor Browser Bundle up to date.
 
 
 ## Directory Authorities  compromise
 
-The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor routers, and other information that is required for a OP to bootstrap a circuit.  These Directory Authorities are hardcoded into the Tor client. They are updated hourly, and build a consensus over the state of the Tor network.  9 of these DA act for the general Tor client, and one acts for Tor bridges.
+The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor relays, and other information that is required for an OP to bootstrap a circuit.  The directory authorities are hardcoded into the Tor client, they're updated hourly, and build a consensus over the state of the Tor network. Nine of these directory authorities act for the general Tor client, and one acts for Tor bridges.
 
 If 5 of the DA's were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise Tor users.
 
@@ -61,16 +61,16 @@ As the DA are geographically diversely located in different legal regimes it wou
 
 # Tor hidden services
 
-Tor hidden services allow a service operartor to anonymise the location of the service. In standard use of Tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
+Tor hidden services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, or the duckduckgo search engine at http://3g2upl4pq6kufc4m.onion/ 
+Hidden services are published as ".onion" addresses.  For example facebook publish <https://facebookcorewwwi.onion>, and the duckduckgo search engine at publishes <http://3g2upl4pq6kufc4m.onion> 
 
-The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] ).  The onion address therefore both identifies and authenticates the site.
+The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. because the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
 
 ## Tor hidden service protocol
 
-The hidden service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the hidden service into a distribited hash table, shared amongs special Tor nodes known as HSDir ( Hidden Service Directories ).
+The hidden service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the hidden service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
 
 When a client wishes to connect to a hidden service, it performs several tasks, all across Tor circuits.
 
@@ -82,7 +82,7 @@ When a client wishes to connect to a hidden service, it performs several tasks, 
 ## Attacks on Tor hidden services
 
 
-# How these attacks are used against Tor users
+# Historic deanonymisation of Tor users 2013-2014
 
 ## Freedom Hosting August-September 2013
 
@@ -103,17 +103,20 @@ These were encoded into an HTTP request to an IP address in Virginia USA.  The H
 
 This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and  substantially different to a general malware attack.  Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware component to form bot nets. Law Enforcement wish to identify the user and preserve evidence.  Network card MAC addresses can be used to trace computer components through supply chains, public IP addresses can be used to identify ISP subscribers.  
 
-Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe" http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document 
+Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe" <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
 
 ### Prevention of deanonymisation
 
 Various steps would have prevented users from being deanonymised, these include. 
 
 - Using current versions of the Tor Browser Bundle.
+    - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
 - Using a firewall or other method that prevented non-torified connections
+    - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix<https://www.whonix.org/> prevent non Tor traffic leaving.
 - Using a non windows operating system
+    - All Tor clients look similar to each other. They are difficult for network attackers to tell apart.  But as most users run Windows operating systems, attacks will most commonly target windows.  This attack did exactly that.
 - Disabling Javascript.  
-    - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default.
+    - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default. Disabling javascript would have prevented the code from running, but could affect usability of some web sites.
 
 ## Silk Road
 
