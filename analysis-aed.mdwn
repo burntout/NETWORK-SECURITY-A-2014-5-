@@ -88,9 +88,9 @@ When a client wishes to connect to a hidden service, it performs several tasks, 
 
 "Freedom hosting" was a service provider offering turnkey tor hidden service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor hidden services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle used at that time. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
 
-The security announcement to the Tor-announce mailing lists The https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html 
+The security announcement to the Tor-announce mailing lists <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html> details the discovery of the deanonymisation attack.
 
-The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University, "https://ghowen.me/fbi-tor-malware-analysis/"  Who notes that  "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
+The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University, <https://ghowen.me/fbi-tor-malware-analysis/>. Owen notes that, "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
 
 The exploit though is interesting as it records only 
 
