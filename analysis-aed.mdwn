@@ -170,7 +170,7 @@ uniq | xargs -i{} echo 'alert tcp any any ->' {}
 
 ~~~~~~~
 
-which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.  They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users.  This will have allowed them to correlate the outgoing traffic with the email header timings.
+which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.  They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users, and been able to correlate the outgoing traffic with the email header timings.
 
 After gathering a list of possible suspects on campus, it's likely that ordinary policing techniques, will have caused the suspect to confess to the act.
 
