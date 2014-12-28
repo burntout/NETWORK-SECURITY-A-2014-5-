@@ -35,6 +35,14 @@ Unless the traffic from the destination is authenticated then an evil exit node 
 
 Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and  Window Live Messenger.
 
+## Correlation Attacks
+
+If an attacker can track data entering and exiting the Tor network they can use the correlate the timing of data packets to deanonymise users.  For example an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a guard node ( entrance ) and exit node. The Tor protocol attempts to prevent this in several ways.
+
+-  Entrance or guard nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are kept. This limits the level of user profiling.
+- Relays can be organised into "families". Tor users avoid using relays that are in the same family
+- Users avoid relays that are in the same /16 IP subnet 
+
 ## Tor browser bundle exploit
 
 A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  To prevent this the Tor project produces a customised version of the Firefox browser which has scripting, plugins, and cookies disabled.  This is known as the Tor Browser Bundle.
@@ -162,7 +170,7 @@ uniq | xargs -i{} echo 'alert tcp any any ->' {}
 
 ~~~~~~~
 
-which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.  They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users.
+which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.  They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users.  This will have allowed them to correlate the outgoing traffic with the email header timings.
 
 After gathering a list of possible suspects on campus, it's likely that ordinary policing techniques, will have caused the suspect to confess to the act.
 
