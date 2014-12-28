@@ -16,7 +16,7 @@ The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. Thi
 
 - The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
-- The OP then selects an number of OR ( {OR_1}...{OR_n} ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance, known as a Guard Node, and a relay node.
+- The OP then selects an number of OR ( OR1, OR2 ... ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance, known as a Guard Node, and a Relay Node.
 - The OP creates a circuit to the guard node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
@@ -48,26 +48,26 @@ The Tor network has 10 Directory Authorities. These contain a list of the curren
 
 If 5 of the DA's were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits that are all controlled by the attacker.  This would deanonymise Tor users.
 
-As the DA are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
+As the DA are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network>.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
 
 
 # Tor hidden services
 
 Tor hidden services allow a service operartor to anonymise the location of the service. In standard use of Tor where a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, http://tnysbtbxsf356hiy.onion
+Hidden services are published as ".onion" addresses.  For example facebook allow it to be accessed as https://facebookcorewwwi.onion, or the duckduckgo search engine at http://3g2upl4pq6kufc4m.onion/ 
 
-The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] )
+The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters of base 32 ( [a-z][2-7] ).  The onion address therefore both identifies and authenticates the site.
 
 
 ## Tor hidden service protocol
 
-The hidden service builds a Tor circuit to a number of "introduction points" (IP).  The IP publish information about the hidden service into a distribited hash table, shared amongs special Tor nodes known as HSDir ( Hidden Service Directories ).
+The hidden service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the hidden service into a distribited hash table, shared amongs special Tor nodes known as HSDir ( Hidden Service Directories ).
 
 When a client wishes to connect to a hidden service, it performs several tasks, all across Tor circuits.
 
-1. looks up the IP and public key info for the hidden service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
-1. Asks the IP to contact the hidden service and tell it the RP
+1. looks up the IntP's and public key info for the hidden service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
+1. Asks the IntP to contact the hidden service and tell it the RP
 1. The HS makes a Tor circuit to the RP
 1. The client makes a circuit to the RP
 
@@ -76,11 +76,13 @@ When a client wishes to connect to a hidden service, it performs several tasks, 
 
 # How these attacks are used against Tor users
 
-## Freedom Hosting 
+## Freedom Hosting August-September 2013
 
-Freedom hosting was company that offered a turnkey tor hidden service hosting. In August 2013 a large number of Tor hidden services hosted by Freedom hosting stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in the particular version of Firefox that the Tor Browser Bundle used at that time.  
+"Freedom hosting" was a service provider offering turnkey tor hidden service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor hidden services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle used at that time. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
 
-The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University, "https://ghowen.me/fbi-tor-malware-analysis/"   "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
+The security announcement to the Tor-announce mailing lists The https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html 
+
+The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University, "https://ghowen.me/fbi-tor-malware-analysis/"  Who notes that  "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
 
 The exploit though is interesting as it records only 
 
@@ -89,15 +91,30 @@ The exploit though is interesting as it records only
 1. the computers ethernet MAC address
 1. a unique identifier linking these data to the web site accessed.
 
-These were encoded into an HTTP request to an IP address in Virginia USA.  
+These were encoded into an HTTP request to an IP address in Virginia USA.  The HTTP request was generated by a raw windows socket. Unless the exploited computer was protected by a firewall or router that blocked non torified connections then the computers public IP address (i.e. that provided by its ISP ) would have been registered as the sending address
 
-This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and  substantially different to a general malware attack.  Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware component to form bot nets etc.. 
+This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and  substantially different to a general malware attack.  Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware component to form bot nets. Law Enforcement wish to identify the user and preserve evidence.  Network card MAC addresses can be used to trace computer components through supply chains, public IP addresses can be used to identify ISP subscribers.  
+
+Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe" http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document 
+
+### Prevention of deanonymisation
+
+Various steps would have prevented users from being deanonymised, these include. 
+
+- Using current versions of the Tor Browser Bundle.
+- Using a firewall or other method that prevented non-torified connections
+- Using a non windows operating system
+- Disabling Javascript.  
+    - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default.
 
 ## Silk Road
 
+
+
+
 ## Harvard Bomb Threat
 
-A Harvard Student in December 2013 emailed a bomb threat to the university authorities. He used the university wireless network to connect to the Tor network, and an anonymous email service to send the email.  Whilst the full details of his deanonymisation are not available some features stand out.
+On 16 December 2013 Harvard University received a bomb threat via the <https://www.guerrillamail.com> email provider. Shortly afterwords a Harvard student was charged. He had used the university wireless network to connect to the Tor network and send the email. Whilst the full details of his deanonymisation are not available some features stand out.
 
 1. The subject authenticated against the university wireless network
 1. It's common on public and authenticated wireless networks to have a high level of logging of source  and destination IP addresses and ports
@@ -105,7 +122,7 @@ A Harvard Student in December 2013 emailed a bomb threat to the university autho
 
 ### Example email header from  https://www.guerrillamail.com
 
-This is an example  of a guerillamail.org email header, with the destination email address and server obfuscated.
+This is an example of a guerillamail.org email header, with the destination email address and server obfuscated. Note that the service provides an additional header `X-Originating-IP: [72.52.75.27]` to provide a way of tracking abuse.
 
 ~~~~~~~~
 
@@ -113,7 +130,7 @@ Return-path: <djajppp+fku4n0@guerrillamail.com>
 Envelope-to: xxxxxxx@example.org
 Delivery-date: Sat, 27 Dec 2014 18:19:40 +0000
 Received: from mail.guerrillamail.com ([198.143.169.10] helo=guerrillamail.com)
-        by xxxxxx.example.org with esmtp (Exim 4.80)
+        by mx.example.org with esmtp (Exim 4.80)
         (envelope-from <djajppp+fku4n0@guerrillamail.com>)
         id 1Y4vxj-0002LQ-1U
         for xxxxxxx@example.org; Sat, 27 Dec 2014 18:19:40 +0000 
@@ -129,11 +146,25 @@ X-Originating-IP: [72.52.75.27]
 
 ~~~~~~~~
 
-The **exonerator** service from the Tor project shows that a particular IP address was acting as an exit node with a policy that allowed access to the service described in the email headers.
+The Tor project provides the **exonerator** service, which is historical information on Tor nodes and their exit policies. This shows that 72.52.75.27 was acting as an exit node with a policy that allowed access to the service described in the email headers (i.e. webmail )
 
 <https://exonerator.torproject.org/?timestamp=2014-12-27&ip=72.52.75.27&targetaddr=198.143.169.10&targetport=80#exit>
 
+Given that the email was sent from the Tor client, Harvard university network administrators could look at the outgoing traffic logs, and determine if any users had accessed the Tor network at the time that the message was sent.  A current consensus can be downloaded from a Tor directory authority, and this can be simply parsed to generate a list of all known tor relays.  For example <http://193.23.244.244/tor/status-vote/current/consensus>. Traffic logs can be searched for outgoing connections to IP addresses in the Tor network.
 
+It is possible that the network administrators had already automated the process of logging traffic to the Tor network.  A small bash shell script, run from a cron job, could automatically generate Snort rules.  For example: 
+
+~~~~~~~
+
+curl -s http://193.23.244.244/tor/status-vote/current/consensus  | \
+grep ^r | awk '{print $7}' | sort  | \
+uniq | xargs -i{} echo 'alert tcp any any ->' {}
+
+~~~~~~~
+
+which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.
+
+After gathering a list of possible suspects on campus, it's likely that ordinary policing techniques, will have caused the suspect to confess to the act.
 
 
 
