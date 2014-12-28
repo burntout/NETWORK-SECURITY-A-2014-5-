@@ -120,6 +120,7 @@ Various steps would have prevented users from being deanonymised, these include.
 
 ## Silk Road
 
+The Silk Road was a Tor hidden service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor hidden services to provide anonymity for the operator.
 
 
 
@@ -182,8 +183,9 @@ After gathering a list of possible suspects on campus, it's likely that ordinary
 In this case the poor operational security and unsophistication of the user made it simple for law enforcement to identify him.
 
 - Using the Harvard network to attack it.
-- Authenticating 
+    - This allowed timing information to be correlated and identify the subject
 - Not scheduling the delivery of the email.
+    - This again allowed timing information to correlated.
 
 ## Relay Early 
 
