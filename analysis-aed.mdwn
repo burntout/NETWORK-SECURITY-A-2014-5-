@@ -122,6 +122,23 @@ Various steps would have prevented users from being deanonymised, these include.
 
 The Silk Road was a Tor hidden service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor hidden services to provide anonymity for the operator.
 
+Ross Ulbricht was arrested on 2 October 2013, and at this time the Silk Road hidden service started showing a image from the FBI. 
+
+The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ubricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
+
+- IP addresses of commercial VPN providers coded into the marketplace application.  The commercial VPN provider provided subscriber information to Law enforcement
+- SSH public keys
+
+Additionally circumstantial historical evidence around the initial marketing, code development, and social media profiles were used to link Ulbricht with the adminstrator of the Silk Road.
+
+The FBI later revealed how they deanonymised the Silk Road server <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>.  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland was discovered.  
+
+The FBI arranged for the machine to be imaged, which where then forensically examined, leading to the arrest of Ulbricht and takedown of the site.
+
+### Prevention of deaonymisation
+
+The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information.  To successfully run a hidden service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public hidden service act as a proxy and forward requests on to a second machine over a private network.  The application logic runs on the second machine, and any failure in that would only return a private IP address.
+
 
 
 ## Harvard Bomb Threat
