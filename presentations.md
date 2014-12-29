@@ -61,7 +61,7 @@ Enhancement
     - Likely not an exploit in tor, but an exploit in the web applications    - This would have de-anonymised some of the Freedom Hosting systems.
     - Additional ones would have been discovered by records from the French hosting company.
 
-# Silk Road - September 2013
+# Silk Road - October 2013
 
 - Silk Road, Tor hidden service providing a market place for drugs.
 - IP address discover from a Captcha
