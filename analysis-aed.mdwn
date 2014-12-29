@@ -81,6 +81,23 @@ When a client wishes to connect to a hidden service, it performs several tasks, 
 
 ## Attacks on Tor hidden services
 
+There are a number of attacks that against hidden services and their users.
+
+### Enumeration of hidden services.
+
+An attacker can run a Hidden Service Directory, and thus gain a partial knowledge of the available number of hidden services and their onion addresses. By counting how often requests for information about these services it's possible for an attacker to gather information on which services are most popular. 
+
+### Hidden Service Guard Nodes.
+
+If the attacker controls the Hidden service Guard Node, it can profile the frequency of traffic into the hidden service.  The attacker can connect a client to the hidden service and send it traffic with a specific signature.  By correlating this with the Guard Node traffic the Hidden Service can be deaonymised.
+
+
+### Hidden Service Client deanonymisation
+
+An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each hidden service request.  If the rogue Guard Node see's that signatiure it can link the client with a specific hidden service request.
+
+
+
 
 # Historic deanonymisation of Tor users 2013-2014
 
@@ -122,7 +139,7 @@ Various steps would have prevented users from being deanonymised, these include.
 
 The Silk Road was a Tor hidden service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor hidden services to provide anonymity for the operator.
 
-Ross Ulbricht was arrested on 2 October 2013, and at this time the Silk Road hidden service started showing a image from the FBI. 
+Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road hidden service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
 The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ubricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
@@ -133,7 +150,7 @@ Additionally circumstantial historical evidence around the initial marketing, co
 
 The FBI later revealed how they deanonymised the Silk Road server <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>.  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland was discovered.  
 
-The FBI arranged for the machine to be imaged, which where then forensically examined, leading to the arrest of Ulbricht and takedown of the site.
+The FBI arranged for the machine to be imaged, which where then forensically examined. This revealed VPN provider addresses, where subscriber information could be gathered, and traffic correlation data which eventually lead to the arrest of Ulbricht and takedown of the site.
 
 ### Prevention of deaonymisation
 
