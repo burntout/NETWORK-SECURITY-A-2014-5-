@@ -223,4 +223,10 @@ In this case the poor operational security and unsophistication of the user made
 
 ## Relay Early 
 
+The Tor network protocol defines two message types "RELAY" and "RELAY_EARLY" to control message flow.
+
+In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for hidden services.  
+
+If a user looking to access a hidden service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a hidden service.
+
 ## Operation Onymous / Silk Road 2
