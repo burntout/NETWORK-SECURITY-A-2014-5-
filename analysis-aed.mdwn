@@ -229,4 +229,10 @@ In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-Ju
 
 If a user looking to access a hidden service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a hidden service.
 
+### Prevention of deanonymisation
+
+- The Tor newtwork removed the attacking relays from the system
+- They relased a software update that prevented the RELAY_EARLY cells being used in this way
+- They released a software update to limit the number of Entry Guards that a Tor client select to use to one.
+
 ## Operation Onymous / Silk Road 2
