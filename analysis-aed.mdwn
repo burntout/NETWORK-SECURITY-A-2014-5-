@@ -63,9 +63,9 @@ As the directory authorities are geographically diversely located in different l
 
 Tor hidden services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example facebook publish <https://facebookcorewwwi.onion>, and the duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
+Hidden services are published as ".onion" addresses.  For example Facebook publish <https://facebookcorewwwi.onion>, and the Duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
 
-The onion address is 80bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
+The onion address is an 80 bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
 
 ## Tor hidden service protocol
