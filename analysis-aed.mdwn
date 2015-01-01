@@ -28,7 +28,7 @@ In practice a OP will build several circuits, with various relay and exit nodes,
 
 ## Evil exit node
 
-Unless the traffic from the destination is authenticated then an evil exit node can insert or alter any responses from the destination to the client. Examples of authenticated traffic are: 
+If the traffic to/from the destination is not authenticated then an evil exit node can alter the communications. Examples of authenticated traffic are: 
 
 - https traffic with certificate verification. This will provide end to end authentication and encryption of destination to the client
 - downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel.  This would allow the exit node to see the traffic still, but the client would be able to tell verify the content.  Examples of this would be the downloading of packages from Windows Update.  The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
