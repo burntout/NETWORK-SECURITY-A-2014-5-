@@ -143,7 +143,7 @@ The Silk Road was a Tor Hidden Service that provided an online market place for 
 
 Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
-The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ubricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
+The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
 - IP addresses of commercial VPN providers coded into the marketplace application.  The commercial VPN provider provided subscriber information to Law enforcement
 - SSH public keys
