@@ -2,7 +2,7 @@
 % Aditya Damodaran and Alan Dawson
 % December 2014
 
-# What is TOR
+# Tor Protocol
 
 ## Tor == **The Onion Router**
 
