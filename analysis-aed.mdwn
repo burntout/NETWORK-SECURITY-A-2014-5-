@@ -59,44 +59,44 @@ If 5 of the directory authorities were taken over, then an attacker could contro
 As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network>.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
 
 
-# Tor hidden services
+# Tor Hidden Services
 
-Tor hidden services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a hidden service, the IP address of the service provider is anonymous.
+Tor Hidden Services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a Hidden Service, the IP address of the service provider is anonymous.
 
 Hidden services are published as ".onion" addresses.  For example Facebook publish <https://facebookcorewwwi.onion>, and the Duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
 
-The onion address is an 80 bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
+The onion address is an 80 bit hash of the public key associated with the Tor Hidden Service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
 Control of the Hidden Service public/private key pair is equivalent to control of the Hidden Service. If an attacker gets control of the public/private key pair, they can register the Hidden Service for themselves.
 
 
-## Tor hidden service protocol
+## Tor Hidden Service protocol
 
-The hidden service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the hidden service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
+The Hidden Service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the Hidden Service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
 
-When a client wishes to connect to a hidden service, it performs several tasks, all across Tor circuits.
+When a client wishes to connect to a Hidden Service, it performs several tasks, all across Tor circuits.
 
-1. looks up the IntP's and public key info for the hidden service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
-1. Asks the IntP to contact the hidden service and tell it the RP
+1. looks up the IntP's and public key info for the Hidden Service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
+1. Asks the IntP to contact the Hidden Service and tell it the RP
 1. The HS makes a Tor circuit to the RP
 1. The client makes a circuit to the RP
 
-## Attacks on Tor hidden services
+## Attacks on Tor Hidden Services
 
-There are a number of attacks that against hidden services and their users.
+There are a number of attacks that against Hidden Services and their users.
 
-### Enumeration of hidden services.
+### Enumeration of Hidden Services.
 
-An attacker can run a Hidden Service Directory, and thus gain a partial knowledge of the available number of hidden services and their onion addresses. By counting how often requests for information about these services it's possible for an attacker to gather information on which services are most popular. 
+An attacker can run a Hidden Service Directory, and thus gain a partial knowledge of the available number of Hidden Services and their onion addresses. By counting how often requests for information about these services it's possible for an attacker to gather information on which services are most popular. 
 
 ### Hidden Service Guard Nodes.
 
-If the attacker controls the Hidden service Guard Node, it can profile the frequency of traffic into the hidden service.  The attacker can connect a client to the hidden service and send it traffic with a specific signature.  By correlating this with the Guard Node traffic the Hidden Service can be deaonymised.
+If the attacker controls the Hidden service Guard Node, it can profile the frequency of traffic into the Hidden Service.  The attacker can connect a client to the Hidden Service and send it traffic with a specific signature.  By correlating this with the Guard Node traffic the Hidden Service can be deaonymised.
 
 
 ### Hidden Service Client deanonymisation
 
-An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each hidden service request.  If the rogue Guard Node see's that signature it can link the client with a specific hidden service request.
+An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each Hidden Service request.  If the rogue Guard Node see's that signature it can link the client with a specific Hidden Service request.
 
 
 
@@ -105,7 +105,7 @@ An attacker can arrange to become a Hidden Service Directory. If the attacker is
 
 ## Freedom Hosting August-September 2013
 
-"Freedom hosting" was a service provider offering turnkey Tor hidden service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor hidden services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
+"Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
 
 The security announcement to the Tor-announce mailing lists <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html> details the discovery of the deanonymisation attack.
 
@@ -139,9 +139,9 @@ Various steps would have prevented users from being deanonymised, these include.
 
 ## Silk Road
 
-The Silk Road was a Tor hidden service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor hidden services to provide anonymity for the operator.
+The Silk Road was a Tor Hidden Service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor Hidden Services to provide anonymity for the operator.
 
-Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road hidden service started showing a image from the FBI warning visitors that the site had been shutdown. 
+Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
 The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ubricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
@@ -156,7 +156,7 @@ The FBI arranged for the machine to be imaged, which where then forensically exa
 
 ### Prevention of deaonymisation
 
-The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information.  To successfully run a hidden service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public hidden service act as a proxy and forward requests on to a second machine over a private network.  The application logic runs on the second machine, and any failure in that would only return a private IP address.
+The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information.  To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network.  The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
 
 
@@ -227,9 +227,9 @@ In this case the poor operational security and unsophistication of the user made
 
 The Tor network protocol defines two message types "RELAY" and "RELAY_EARLY" to control message flow.
 
-In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for hidden services.  
+In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for Hidden Services.  
 
-If a user looking to access a hidden service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a hidden service.
+If a user looking to access a Hidden Service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a Hidden Service.
 
 ### Prevention of deanonymisation
 
@@ -240,7 +240,7 @@ If a user looking to access a hidden service, was both using an attackers Guard 
 
 ## Operation Onymous / Silk Road 2
 
-Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 hidden services <http://krebsonsecurity.com/2014/11/feds-arrest-alleged-silk-road-2-admin-seize-servers> , but later analysis <https://www.nikcub.com/posts/onymous-part1/> suggests smaller numbers.
+Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 Hidden Services <http://krebsonsecurity.com/2014/11/feds-arrest-alleged-silk-road-2-admin-seize-servers> , but later analysis <https://www.nikcub.com/posts/onymous-part1/> suggests smaller numbers.
 
 ### Silk Road 2
 
