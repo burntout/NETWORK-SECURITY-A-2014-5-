@@ -1,6 +1,6 @@
 % Deanonymisation attacks on the Tor network 2013-2014
 % Alan Dawson
-% December 2014
+% January 2014
 
 # Tor
 
@@ -278,6 +278,8 @@ Hidden Services operators should make sure that they have good operational secur
 - They should make sure that they only access and adminstrate the services through the Tor network, avoiding leaking of IP address information.
 - Maintain some separation between billing details and user identifiable information.
 - Servers and systems should be configured to maintain minimal logging.
+- The operating system and related components of the Hidden Services should run secure and managed code, so that they don't provide identifying information. 
+    - Debug statements should not be left in live code. 
+- Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
-The operating system and related components of the Hidden Services should run secure and managed code, so that they dont provide identifying information. Debug statements should not be left in live code. Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
-
+Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users.  The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
