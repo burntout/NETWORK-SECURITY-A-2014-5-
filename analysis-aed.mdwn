@@ -10,7 +10,7 @@ Tor is a low latency anonymisation  and privacy platform for network traffic.
 - Anonymisation in that it seeks to prevent network operators identifying the source of traffic.
 - Privacy in that it seeks to prevent network operators identifying the content of traffic.
 
-# How does it work
+# The Tor Protocol
 
 The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. This involves the following stages:- 
 
@@ -31,7 +31,7 @@ In practice a OP will build several circuits, with various relay and exit nodes,
 If the traffic to/from the destination is not authenticated then an evil exit node can alter the communications. Examples of authenticated traffic are: 
 
 - https traffic with certificate verification. This will provide end to end authentication and encryption of destination to the client
-- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel.  This would allow the exit node to see the traffic still, but the client would be able to tell verify the content.  Examples of this would be the downloading of packages from Windows Update.  The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
+- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel.  This would allow the exit node to see the traffic still, but the client would be able securely verify the content.  Examples of this would downloading of packages from Windows Update.  The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
 
 Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and  Window Live Messenger.
 
@@ -67,6 +67,8 @@ Hidden services are published as ".onion" addresses.  For example Facebook publi
 
 The onion address is an 80 bit hash of the public key associated with the Tor hidden service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
+Control of the Hidden Service public/private key pair is equivalent to control of the Hidden Service. If an attacker gets control of the public/private key pair, they can register the Hidden Service for themselves.
+
 
 ## Tor hidden service protocol
 
@@ -94,7 +96,7 @@ If the attacker controls the Hidden service Guard Node, it can profile the frequ
 
 ### Hidden Service Client deanonymisation
 
-An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each hidden service request.  If the rogue Guard Node see's that signature it can link the client with a specific hidden service request.
+An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each hidden service request.  If the rogue Guard Node see's that signature it can link the client with a specific hidden service request.
 
 
 
@@ -225,7 +227,7 @@ In this case the poor operational security and unsophistication of the user made
 
 The Tor network protocol defines two message types "RELAY" and "RELAY_EARLY" to control message flow.
 
-In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for hidden services.  
+In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for hidden services.  
 
 If a user looking to access a hidden service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a hidden service.
 
@@ -234,18 +236,30 @@ If a user looking to access a hidden service, was both using an attackers Guard 
 - The Tor newtwork removed the attacking relays from the system
 - They relased a software update that prevented the RELAY_EARLY cells being used in this way
 - They released a software update to limit the number of Entry Guards that a Tor client select to use to one.
+- Advised Hidden Service operators to change location.
 
 ## Operation Onymous / Silk Road 2
 
-Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".
+Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 hidden services <http://krebsonsecurity.com/2014/11/feds-arrest-alleged-silk-road-2-admin-seize-servers> , but later analysis <https://www.nikcub.com/posts/onymous-part1/> suggests smaller numbers.
 
 ### Silk Road 2
-   - Poor opsec
-   - Undercover police work
-   - rented servers in own name ( Lithuania )
-   - <https://pdf.yt/d/RpyX9_xmapTkhmkb>
+
+- Poor opsec
+- Undercover police work
+- rented servers in own name ( Lithuania )
+- <https://pdf.yt/d/RpyX9_xmapTkhmkb>
 
 ### Other sites
-    
-- <https://www.nikcub.com/posts/onymous-part1/>
+
+Not known.  Several techniques can be applied to discover Hidden Services though 
+
+- A virtual private server provider can search through the disk images it has looking for files and directories required by Tor Hidden Services. 
+- If an attacker controls the Hidden Service Guard Node, they can perform traffic confirmation attacks on the Hidden Service.
+    - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
+- The Relay Early attack from 30th January 2014 could have mapped Hidden Services
+
+
+With several simultaneous shutdowns of Hidden Services it's likely that there was a large amount of research and coordination between different law enforcement agencies.
+
+
 
