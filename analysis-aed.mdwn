@@ -150,7 +150,7 @@ The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pd
 
 Additionally circumstantial historical evidence around the initial marketing, code development, and social media profiles were used to link Ulbricht with the adminstrator of the Silk Road.
 
-The FBI later revealed how they deanonymised the Silk Road server <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>.  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland was discovered.  
+The FBI later revealed how they deanonymised the Silk Road server <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>.  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland being discovered.  
 
 The FBI arranged for the machine to be imaged, which where then forensically examined. This revealed VPN provider addresses, where subscriber information could be gathered, and traffic correlation data which eventually lead to the arrest of Ulbricht and takedown of the site.
 
