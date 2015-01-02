@@ -236,3 +236,16 @@ If a user looking to access a hidden service, was both using an attackers Guard 
 - They released a software update to limit the number of Entry Guards that a Tor client select to use to one.
 
 ## Operation Onymous / Silk Road 2
+
+Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".
+
+### Silk Road 2
+   - Poor opsec
+   - Undercover police work
+   - rented servers in own name ( Lithuania )
+   - <https://pdf.yt/d/RpyX9_xmapTkhmkb>
+
+### Other sites
+    
+- <https://www.nikcub.com/posts/onymous-part1/>
+
