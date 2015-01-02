@@ -244,14 +244,18 @@ Over the 5/6th November 2014 many hidden sites acting as online marketplaces wer
 
 ### Silk Road 2
 
-- Poor opsec
-- Undercover police work
-- rented servers in own name ( Lithuania )
-- <https://pdf.yt/d/RpyX9_xmapTkhmkb>
+In the FBI complaint against Blake Benthall <https://pdf.yt/d/RpyX9_xmapTkhmkb> we learn that
+
+- Undercover police work had placed an operator on the administrative staff.
+- Servers were rented with email addresses that linked directly back to Benthall.
+- Benthall did not use Tor client to access parts of the site
+    - Undercover police were able to manage forum software for the site and noted that IP addressing and browser user agent information
+
+How the server was located is not described in the document.  The Tor project <https://blog.torproject.org/blog/thoughts-and-concerns-about-operation-onymous> and others <https://freedom-to-tinker.com/blog/felten/why-were-cert-researchers-attacking-tor/> have suggested that the RELAY EARLY attack was used to locate hidden services.
 
 ### Other sites
 
-Not known.  Several techniques can be applied to discover Hidden Services though 
+Again direct information is not available, but several techniques can be applied to discover Hidden Services though 
 
 - A virtual private server provider can search through the disk images it has looking for files and directories required by Tor Hidden Services. 
 - If an attacker controls the Hidden Service Guard Node, they can perform traffic confirmation attacks on the Hidden Service.
