@@ -101,7 +101,7 @@ An attacker can arrange to become a Hidden Service Directory. If the attacker is
 
 
 
-# Historic deanonymisation of Tor users 2013-2014
+# Practical Deanonymisation of Tor users 2013-2014
 
 ## Freedom Hosting August-September 2013
 

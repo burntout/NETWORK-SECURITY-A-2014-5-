@@ -46,6 +46,11 @@ Enhancement
 
 - Various attacks known in the press.
 - We present some in chronological order.
+    - Freedom Hosting
+    - Silk Road
+    - Harvard Bomb Threat
+    - RELAY EARLY
+    - Operation Onymous
 
 # Freedom Hosting July-August 2013
 
