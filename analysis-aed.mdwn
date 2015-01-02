@@ -257,9 +257,27 @@ Not known.  Several techniques can be applied to discover Hidden Services though
 - If an attacker controls the Hidden Service Guard Node, they can perform traffic confirmation attacks on the Hidden Service.
     - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
 - The Relay Early attack from 30th January 2014 could have mapped Hidden Services
+- Attacks on the Hidden Service's software, e.g. MySQL injection or remote file inclusion/execution
 
 
 With several simultaneous shutdowns of Hidden Services it's likely that there was a large amount of research and coordination between different law enforcement agencies.
 
+## Conclusion 
 
+Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems. The Tor network was not designed to work against an adversary of global passive scope.  However it still provides significant effort for users to be deanonymised. 
+
+Client who wish to remain anonymous should 
+
+- Not run arbitrary code in your Tor browser ( eg. disable java script/flash )
+- Use the latest Tor Browser Bundle package
+- Use a dedicated virtual machine or operating system ( eg. Whonix, Tails )
+- Force all traffic to be "torified"
+
+Hidden Services operators should make sure that they have good operational security. 
+
+- They should make sure that they only access and adminstrate the services through the Tor network, avoiding leaking of IP address information.
+- Maintain some separation between billing details and user identifiable information.
+- Servers and systems should be configured to maintain minimal logging.
+
+The operating system and related components of the Hidden Services should run secure and managed code, so that they dont provide identifying information. Debug statements should not be left in live code. Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
