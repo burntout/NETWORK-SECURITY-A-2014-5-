@@ -50,7 +50,7 @@ A common error for users is to use the same browser on the Tor network as they d
 To prevent this the Tor project produces a customised version of the Firefox browser, known as the Tor Browser Bundle, which has most plugins, and cookies disabled. This customised verion of Firefox is vulnerable to similar exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the Tor Browser Bundle up to date.
 
 
-## Directory Authorities  compromise
+## Directory Authorities compromise
 
 The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor relays, and other information that is required for an OP to bootstrap a circuit.  The directory authorities are hardcoded into the Tor client, they're updated hourly, and build a consensus over the state of the Tor network. Nine of these directory authorities act for the general Tor client, and one acts for Tor bridges.
 
@@ -72,7 +72,11 @@ Control of the Hidden Service public/private key pair is equivalent to control o
 
 ## Tor Hidden Service protocol
 
-The Hidden Service builds a Tor circuit to a number of "introduction points" (IntP).  The IntP publish information about the Hidden Service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
+The Hidden Service protocol is described in the Tor Rendezvous Specification[^torspec-3]
+
+1. The Hidden Service builds a Tor circuit to a number of "introduction points" (IntP).  
+1. The IntP publish information about the Hidden Service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
+
 
 When a client wishes to connect to a Hidden Service, it performs several tasks, all across Tor circuits.
 
@@ -293,6 +297,7 @@ The practical attacks that are best documented are by law enforcement against cr
 
 [^torspec-1]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n129>
 [^torspec-2]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n1021>
+[^torspec-3]: <https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt#n63>
 
 [^tor1]: <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network> 
 [^tor2]: <https://news.ycombinator.com/item?id=8774833>
