@@ -304,7 +304,7 @@ The practical attacks that are best documented are by law enforcement against cr
 
 
 [^tor-firefox]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
-[^tor-owen1]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
+[^tor-owen1]: <https://ghowen.me/fbi-tor-malware-analysis/>
 [^tor-nsa1]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
 
 
