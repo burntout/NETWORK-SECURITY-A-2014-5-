@@ -4,7 +4,7 @@
 
 # Tor
 
-Tor is a low latency anonymisation  and privacy platform for network traffic.  
+Tor is a low latency anonymisation and privacy platform for network traffic[^torspec-1].  
 
 - Low latency, in that it's usable for everyday browsing. 
 - Anonymisation in that it seeks to prevent network operators identifying the source of traffic.
@@ -56,7 +56,7 @@ The Tor network has 10 Directory Authorities. These contain a list of the curren
 
 If 5 of the directory authorities were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits where the nodes are all controlled by the attacker.  This would deanonymise Tor users.
 
-As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network>.  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.
+As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 [^tor1].  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.[^tor2]
 
 
 # Tor Hidden Services
@@ -107,9 +107,9 @@ An attacker can arrange to become a Hidden Service Directory. If the attacker is
 
 "Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
 
-The security announcement to the Tor-announce mailing lists <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html> details the discovery of the deanonymisation attack.
+The security announcement to the Tor-announce mailing lists[^tor-firefox] details the discovery of the deanonymisation attack.
 
-The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University, <https://ghowen.me/fbi-tor-malware-analysis/>. Owen notes that, "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
+The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth University[^tor-owen1]. Owen notes that, "The malware phones home with identifying information from the user's computer and then crashes the firefox browser. In terms of sophistication, it's nothing special with no obfuscation and no new tricks that arent widely known other than the exploit. "
 
 The exploit though is interesting as it records only 
 
@@ -122,16 +122,16 @@ These were encoded into an HTTP request to an IP address in Virginia USA.  The H
 
 This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and  substantially different to a general malware attack.  Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware components to form bot nets. Law Enforcement wish to identify the user and preserve evidence.  Network card MAC addresses can be used to trace computer components through supply chains, public IP addresses can be used to identify ISP subscribers.  
 
-Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe" <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe"[^tor-nsa1]
 
 ### Prevention of deanonymisation
 
-Various steps would have prevented users from being deanonymised, these include. 
+Various steps would have prevented users from being deanonymised were noted in the Tor security advisory[^tor-firefox], these include. 
 
 - Using current versions of the Tor Browser Bundle.
     - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
 - Using a firewall or other method that prevented non-torified connections
-    - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix<https://www.whonix.org/> prevent non Tor traffic leaving.
+    - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix <https://www.whonix.org/> prevent non Tor traffic leaving.
 - Using a non windows operating system
     - All Tor clients look similar to each other. They are difficult for network attackers to tell apart.  But as most users run Windows operating systems, attacks will most commonly target windows.  This attack did exactly that.
 - Disabling Javascript.  
@@ -143,18 +143,18 @@ The Silk Road was a Tor Hidden Service that provided an online market place for 
 
 Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
-The FBI complaint <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>  that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
+The FBI complaint[^silkroad-fbi]  that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
 - IP addresses of commercial VPN providers coded into the marketplace application.  The commercial VPN provider provided subscriber information to Law enforcement
 - SSH public keys
 
 Additionally circumstantial historical evidence around the initial marketing, code development, and social media profiles were used to link Ulbricht with the adminstrator of the Silk Road.
 
-The FBI later revealed how they deanonymised the Silk Road server <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>.  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland being discovered.  
+The FBI later revealed how they deanonymised the Silk Road server[^silkroad-fbi-2].  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland being discovered.  
 
 The FBI arranged for the machine to be imaged and the image forensically examined. This revealed VPN provider addresses, where subscriber information could be gathered, and traffic correlation data which eventually lead to the arrest of Ulbricht and takedown of the site.
 
-### Prevention of deaonymisation
+### Prevention of deanonymisation
 
 The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information.  To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network.  The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
@@ -162,7 +162,7 @@ The code that ran the Silk Road application had at various times had debug state
 
 ## Harvard Bomb Threat
 
-On 16 December 2013 Harvard University received a bomb threat via the <https://www.guerrillamail.com> email provider. Shortly afterwords a Harvard student was charged. He had used the university wireless network to connect to the Tor network and send the email. Whilst the full details of his deanonymisation are not available some features stand out.
+On 16 December 2013 Harvard University received a bomb threat[^harvard-1] via the guerrilla mail email provider[^harvard-fbi]. Shortly afterwords a Harvard student was charged. He had used the university wireless network to connect to the Tor network and send the email. Whilst the full details of his deanonymisation are not available some features stand out.
 
 - The subject authenticated against the university wireless network
 - It's common on public and authenticated wireless networks to have a high level of logging of source  and destination IP addresses and ports 
@@ -194,7 +194,7 @@ X-Originating-IP: [72.52.75.27]
 
 ~~~~~~~~
 
-The Tor project provides the **exonerator** service, which is historical information on Tor nodes and their exit policies. This shows that 72.52.75.27 was acting as an exit node with a policy that allowed access to the service described in the email headers (i.e. webmail )
+The Tor project provides the **exoneraTor**[^harvard-exonerator] service, which is historical information on Tor nodes and their exit policies. This shows that 72.52.75.27 was acting as an exit node with a policy that allowed access to the service described in the email headers (i.e. webmail )
 
 <https://exonerator.torproject.org/?timestamp=2014-12-27&ip=72.52.75.27&targetaddr=198.143.169.10&targetport=80#exit>
 
@@ -204,8 +204,8 @@ It is possible that the network administrators had already automated the process
 
 ~~~~~~~
 
-curl -s http://193.23.244.244/tor/status-vote/current/consensus  | \
-grep ^r | awk '{print $7}' | sort  | \
+curl -s http://193.23.244.244/tor/status-vote/current/consensus | \
+grep ^r | awk '{print $7}' | sort | \
 uniq | xargs -i{} echo 'alert tcp any any ->' {}
 
 ~~~~~~~
@@ -227,31 +227,31 @@ In this case the poor operational security and unsophistication of the user made
 
 The Tor network protocol defines two message types "RELAY" and "RELAY_EARLY" to control message flow.
 
-In July 2014 it was <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html> discovered that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for Hidden Services.  
+In July 2014 the Tor project discovered[^relay-early-1] that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for Hidden Services.  
 
-If a user looking to access a Hidden Service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deaonymise the users of a Hidden Service.
+If a user looking to access a Hidden Service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deanonymise the users of a Hidden Service.
 
 ### Prevention of deanonymisation
 
-- The Tor newtwork removed the attacking relays from the system
-- They relased a software update that prevented the RELAY_EARLY cells being used in this way
-- They released a software update to limit the number of Entry Guards that a Tor client select to use to one.
+- The Tor network removed the attacking relays from the system
+- They released a software update that prevented the RELAY_EARLY cells being used in this way
+- They released a software update to limit the number of Entry Guards that a Tor client selects to one.
 - Advised Hidden Service operators to change location.
 
 ## Operation Onymous / Silk Road 2
 
-Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 Hidden Services <http://krebsonsecurity.com/2014/11/feds-arrest-alleged-silk-road-2-admin-seize-servers> , but later analysis <https://www.nikcub.com/posts/onymous-part1/> suggests smaller numbers.
+Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 Hidden Services[^onymous-1], but later analysis[^onymous-2] suggests smaller numbers.
 
 ### Silk Road 2
 
-In the FBI complaint against Blake Benthall <https://pdf.yt/d/RpyX9_xmapTkhmkb> we learn that
+In the FBI complaint[^onymous-3] against Blake Benthall we learn that
 
 - Undercover police work had placed an operator on the administrative staff.
 - Servers were rented with email addresses that linked directly back to Benthall.
 - Benthall did not use Tor client to access parts of the site
-    - Undercover police were able to manage forum software for the site and noted that IP addressing and browser user agent information
+    - Undercover police were able to manage forum software for the site and were able to correlate site users with IP addresses and browser user agent information.
 
-How the server was located is not described in the document.  The Tor project <https://blog.torproject.org/blog/thoughts-and-concerns-about-operation-onymous> and others <https://freedom-to-tinker.com/blog/felten/why-were-cert-researchers-attacking-tor/> have suggested that the RELAY EARLY attack was used to locate hidden services.
+How the server was located is not described in the document.  The Tor project[^onymous-4] and others[^onymous-5] have suggested that the RELAY EARLY attack was used to locate hidden services.
 
 ### Other sites
 
@@ -287,3 +287,34 @@ Hidden Services operators should make sure that they have good operational secur
 - Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
 Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users.  The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
+
+
+[^torspec-1]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n129>
+
+
+[^tor1]: <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network> 
+[^tor2]: <https://news.ycombinator.com/item?id=8774833>
+
+
+[^tor-firefox]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
+[^tor-owen1]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
+[^tor-nsa1]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+
+
+[^silkroad-fbi]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+[^silkroad-fbi-2]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+
+
+[^harvard-1]: <http://www.thecrimson.com/article/2013/12/16/unconfirmed-reports-explosives-four-buildings/>
+[^harvard-fbi]: <http://www.scribd.com/doc/192322531/Criminal-Complaint-Against-Student-Charged-With-Making-Harvard-Bomb-Threat>
+[^harvard-exonerator]: <https://exonerator.torproject.org>
+
+
+[^relay-early-1]: <https://lists.torproject.org/pipermail/tor-announce/2014-July/000094.html>
+
+[^onymous-1]: <http://krebsonsecurity.com/2014/11/feds-arrest-alleged-silk-road-2-admin-seize-servers>
+[^onymous-2]: <https://www.nikcub.com/posts/onymous-part1/>
+[^onymous-3]: <https://pdf.yt/d/RpyX9_xmapTkhmkb>
+[^onymous-4]: <https://blog.torproject.org/blog/thoughts-and-concerns-about-operation-onymous>
+[^onymous-5]: <https://freedom-to-tinker.com/blog/felten/why-were-cert-researchers-attacking-tor/>
+
