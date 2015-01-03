@@ -19,6 +19,7 @@
     - The exit node gets to see the destination request.
     - The relay node only sees an encrypted routing request between the entrance and exit.
 
+<!--
 # Tor Client 2
 
 - Not always possible to join the tor network 
@@ -30,7 +31,7 @@
 Enhancement
     - obfsproxy
     - proxy services that can be used to obfuscate tor traffic, evading DPI
-
+-->
 
 # Tor Hidden Services
 
