@@ -12,7 +12,7 @@ Tor is a low latency anonymisation and privacy platform for network traffic[^tor
 
 # The Tor Protocol
 
-The Tor client, known as a an Onion Proxy (OP) creates several circuits at startup. This is described in detail in the Tor Protocol Specification[^tor-spec-2]
+The Tor client, known as a an Onion Proxy (OP) creates several circuits at startup. This is described in detail in the Tor Protocol Specification[^torspec-2]
 
 - The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
