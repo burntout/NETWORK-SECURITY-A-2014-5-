@@ -4,7 +4,7 @@
 
 # Tor
 
-Tor is a low latency anonymisation and privacy platform for network traffic[^torspec-1].  
+Tor is a low latency anonymisation and privacy platform for network traffic[^torspec-1]. 
 
 - Low latency, in that it's usable for everyday browsing. 
 - Anonymisation in that it seeks to prevent network operators identifying the source of traffic.
@@ -14,13 +14,13 @@ Tor is a low latency anonymisation and privacy platform for network traffic[^tor
 
 The Tor client, known as a an Onion Proxy (OP) creates several circuits at startup. This is described in detail in the Tor Protocol Specification[^torspec-2]
 
-- The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
+- The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information. 
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
-- The OP then selects an number of OR ( OR1, OR2 ... ) to create a circuit to the exit node.  In practice this is just 2 OR, an entrance, known as a Guard Node, and a Relay Node.
+- The OP then selects an number of OR ( OR1, OR2 ... ) to create a circuit to the exit node. In practice this is just 2 OR, an entrance, known as a Guard Node, and a Relay Node.
 - The OP creates a circuit to the guard node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
-In this way OP builds a circuit across 3 OR.  Each OR is only aware of the previous hop and destination hop.  
+In this way OP builds a circuit across 3 OR. Each OR is only aware of the previous hop and destination hop. 
 
 In practice a OP will build several circuits, with various relay and exit nodes, but will keep the same guard node ( entrance ) for extended periods of time.
 
@@ -31,39 +31,39 @@ In practice a OP will build several circuits, with various relay and exit nodes,
 If the traffic to/from the destination is not authenticated then an evil exit node can alter the communications. Examples of authenticated traffic are: 
 
 - https traffic with certificate verification. This will provide end to end authentication and encryption of destination to the client
-- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel.  This would allow the exit node to see the traffic still, but the client would be able securely verify the content.  Examples of this would downloading of packages from Windows Update.  The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
+- downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel. This would allow the exit node to see the traffic still, but the client would be able securely verify the content. Examples of this would downloading of packages from Windows Update. The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
 
-Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and  Window Live Messenger.
+Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and Window Live Messenger.
 
 ## Correlation Attacks
 
-If an attacker can track data entering and exiting the Tor network they can use the correlate the timing of data packets to deanonymise users.  For example an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a guard node ( entrance ) and exit node. The Tor protocol attempts to prevent this in several ways.
+If an attacker can track data entering and exiting the Tor network they can use the correlate the timing of data packets to deanonymise users. For example an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a guard node ( entrance ) and exit node. The Tor protocol attempts to prevent this in several ways.
 
--  Entrance or guard nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are kept. This limits the level of user profiling.
+- Entrance or guard nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are kept. This limits the level of user profiling.
 - Relays can be organised into "families". Tor users avoid using relays that are in the same family
 - Users avoid relays that are in the same /16 IP subnet 
 
 ## Tor Browser Bundle Exploit
 
-A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity.  
+A common error for users is to use the same browser on the Tor network as they do for everyday browsing. Websites will store small pieces of information to identify users called cookies to maintain state or to track for advertising purposes. When this browser is then used to visit websites across the Tor network, these same cookies will reveal the users identity. 
 
 To prevent this the Tor project produces a customised version of the Firefox browser, known as the Tor Browser Bundle, which has most plugins, and cookies disabled. This customised verion of Firefox is vulnerable to similar exploits that other versions of Firefox are, and it's important that Tor users keep their versions of the Tor Browser Bundle up to date.
 
 
 ## Directory Authorities Compromise
 
-The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor relays, and other information that is required for an OP to bootstrap a circuit.  The directory authorities are hardcoded into the Tor client, they're updated hourly, and build a consensus over the state of the Tor network. Nine of these directory authorities act for the general Tor client, and one acts for Tor bridges.
+The Tor network has 10 Directory Authorities. These contain a list of the currently active Tor relays, and other information that is required for an OP to bootstrap a circuit. The directory authorities are hardcoded into the Tor client, they're updated hourly, and build a consensus over the state of the Tor network. Nine of these directory authorities act for the general Tor client, and one acts for Tor bridges.
 
-If 5 of the directory authorities were taken over, then an attacker could control the view of the Tor network that clients received.  For example clients could be directed to select circuits where the nodes are all controlled by the attacker.  This would deanonymise Tor users.
+If 5 of the directory authorities were taken over, then an attacker could control the view of the Tor network that clients received. For example clients could be directed to select circuits where the nodes are all controlled by the attacker. This would deanonymise Tor users.
 
-As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this.  However it was rumoured that this was about to take place in December 19th 2014 [^tor1].  It's been noted that collusion between the German and US states could remove 5 Directory Authorities.[^tor2]
+As the directory authorities are geographically diversely located in different legal regimes it would be difficult for an attacker to do this. However it was rumoured that this was about to take place in December 19th 2014 [^tor1]. It's been noted that collusion between the German and US states could remove 5 Directory Authorities.[^tor2]
 
 
 # Tor Hidden Services
 
 Tor Hidden Services allow a service operator to anonymise the location of the service. In standard use of Tor a destination is not able to discover the IP address of client. When a service is published as a Hidden Service, the IP address of the service provider is anonymous.
 
-Hidden services are published as ".onion" addresses.  For example Facebook publish <https://facebookcorewwwi.onion>, and the Duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
+Hidden services are published as ".onion" addresses. For example Facebook publish <https://facebookcorewwwi.onion>, and the Duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
 
 The onion address is an 80 bit hash of the public key associated with the Tor Hidden Service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
@@ -74,20 +74,20 @@ Control of the Hidden Service public/private key pair is equivalent to control o
 
 The Hidden Service protocol is described in the Tor Rendezvous Specification[^torspec-3]
 
-1. The Hidden Service builds a Tor circuit to a number of "introduction points" (IntP).  
+1. The Hidden Service builds a Tor circuit to a number of "introduction points" (IntP). 
 1. The IntP publish information about the Hidden Service into a distributed hash table, shared amongst special Tor nodes known as HSDir ( Hidden Service Directories ).
 
 
 When a client wishes to connect to a Hidden Service, it performs several tasks, all across Tor circuits.
 
-1. looks up the IntP's and public key info for the Hidden Service from a HSDir server, and  chooses an OR to be a Rendezvous Point (RP)
+1. looks up the IntP's and public key info for the Hidden Service from a HSDir server, and chooses an OR to be a Rendezvous Point (RP)
 1. Asks the IntP to contact the Hidden Service and tell it the RP
 1. The HS makes a Tor circuit to the RP
 1. The client makes a circuit to the RP
 
 ## Attacks on Tor Hidden Services
 
-There are a number of attacks that against Hidden Services and their users.
+There are a number of attacks that against Hidden Services and their users. These are described in Gareth Owens talks at this years Chaos Communication Congress [^tor-31c3-2]
 
 ### Enumeration of Hidden Services.
 
@@ -95,21 +95,18 @@ An attacker can run a Hidden Service Directory, and thus gain a partial knowledg
 
 ### Hidden Service Guard Nodes.
 
-If the attacker controls the Hidden service Guard Node, it can profile the frequency of traffic into the Hidden Service.  The attacker can connect a client to the Hidden Service and send it traffic with a specific signature.  By correlating this with the Guard Node traffic the Hidden Service can be deaonymised.
+If the attacker controls the Hidden service Guard Node, it can profile the frequency of traffic into the Hidden Service. The attacker can connect a client to the Hidden Service and send it traffic with a specific signature. By correlating this with the Guard Node traffic the Hidden Service can be deaonymised.
 
 
 ### Hidden Service Client Deanonymisation
 
-An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each Hidden Service request.  If the rogue Guard Node see's that signature it can link the client with a specific Hidden Service request.
-
-
-
+An attacker can arrange to become a Hidden Service Directory. If the attacker is able to become a Guard Node for the client also, then the rogue Hidden Service Directory can add a signature to the it's responses for each Hidden Service request. If the rogue Guard Node see's that signature it can link the client with a specific Hidden Service request.
 
 # Practical Deanonymisation of Tor users 2013-2014
 
 ## Freedom Hosting August-September 2013
 
-"Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting.  It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
+"Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting. It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
 
 The security announcement to the Tor-announce mailing lists[^tor-firefox] details the discovery of the deanonymisation attack.
 
@@ -118,13 +115,13 @@ The vulnerability has been extensively analysed by Dr Gareth Owen of Portsmouth 
 The exploit though is interesting as it records only 
 
 1. The computer windows hostname. 
-1. The local IP address of the computer.  
+1. The local IP address of the computer. 
 1. The computers ethernet MAC address.
 1. A unique identifier linking these data to the web site accessed.
 
-These were encoded into an HTTP request to an IP address in Virginia USA.  The HTTP request was generated by a raw windows socket. Unless the exploited computer was protected by a firewall or router that blocked non torified connections then the computers public IP address (i.e. that provided by its ISP ) would have been registered as the sending address
+These were encoded into an HTTP request to an IP address in Virginia USA. The HTTP request was generated by a raw windows socket. Unless the exploited computer was protected by a firewall or router that blocked non torified connections then the computers public IP address (i.e. that provided by its ISP ) would have been registered as the sending address
 
-This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and  substantially different to a general malware attack.  Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware components to form bot nets. Law Enforcement wish to identify the user and preserve evidence.  Network card MAC addresses can be used to trace computer components through supply chains, public IP addresses can be used to identify ISP subscribers.  
+This data recorded is typical of a law enforcement CIPAV ( Computer Internet Protocol Address Verifier ), and substantially different to a general malware attack. Malware attacks are more generally interested in monetizing the victim. For example, copying banking details, sending spam email, downloading additional malware components to form bot nets. Law Enforcement wish to identify the user and preserve evidence. Network card MAC addresses can be used to trace computer components through supply chains, public IP addresses can be used to identify ISP subscribers. 
 
 Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe"[^tor-nsa1]
 
@@ -133,13 +130,13 @@ Evidence has since come out that the NSA helped develop this attack under the co
 Various steps would have prevented users from being deanonymised were noted in the Tor security advisory[^tor-firefox], these include. 
 
 - Using current versions of the Tor Browser Bundle.
-    - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
+  - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
 - Using a firewall or other method that prevented non-torified connections
-    - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix <https://www.whonix.org/> prevent non Tor traffic leaving.
+  - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix <https://www.whonix.org/> prevent non Tor traffic leaving.
 - Using a non windows operating system
-    - All Tor clients look similar to each other. They are difficult for network attackers to tell apart.  But as most users run Windows operating systems, attacks will most commonly target windows.  This attack did exactly that.
-- Disabling Javascript.  
-    - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default. Disabling javascript would have prevented the code from running, but could affect usability of some web sites.
+  - All Tor clients look similar to each other. They are difficult for network attackers to tell apart. But as most users run Windows operating systems, attacks will most commonly target windows. This attack did exactly that.
+- Disabling Javascript. 
+  - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default. Disabling javascript would have prevented the code from running, but could affect usability of some web sites.
 
 ## Silk Road
 
@@ -147,22 +144,22 @@ The Silk Road was a Tor Hidden Service that provided an online market place for 
 
 Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
-The FBI complaint[^silkroad-fbi]  that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
+The FBI complaint[^silkroad-fbi] that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
-- IP addresses of commercial VPN providers coded into the marketplace application.  
-    - The commercial VPN provider provided subscriber information to law enforcement
+- IP addresses of commercial VPN providers coded into the marketplace application. 
+  - The commercial VPN provider provided subscriber information to law enforcement
 - SSH public keys
-    - Public keys often contain information about the machine they were created on.
+  - Public keys often contain information about the machine they were created on.
 
 Additionally circumstantial historical evidence around the initial marketing, code development, and social media profiles were used to link Ulbricht with the adminstrator of the Silk Road.
 
-The FBI later revealed how they deanonymised the Silk Road server[^silkroad-fbi-2].  In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland being discovered.  
+The FBI later revealed how they deanonymised the Silk Road server[^silkroad-fbi-2]. In it a computer security expert describes the process of fuzzing input into login fields on the Silk Road Marketplace web application, recording of the output, and gathering packet captures of traffic. In June 2013 this resulted in an IP address associated with a server in Iceland being discovered. 
 
 The FBI arranged for the machine to be imaged and the image forensically examined. This revealed VPN provider addresses, where subscriber information could be gathered, and traffic correlation data which eventually lead to the arrest of Ulbricht and takedown of the site.
 
 ### Prevention of deanonymisation
 
-The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information.  To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network.  The application logic runs on the second machine, and any failure in that would only return a private IP address.
+The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
 
 
@@ -171,10 +168,10 @@ The code that ran the Silk Road application had at various times had debug state
 On 16 December 2013 Harvard University received a bomb threat[^harvard-1] via the guerrilla mail email provider[^harvard-fbi]. Shortly afterwords a Harvard student was charged. He had used the university wireless network to connect to the Tor network and send the email. Whilst the full details of his deanonymisation are not available some features stand out.
 
 - The subject authenticated against the university wireless network
-- It's common on public and authenticated wireless networks to have a high level of logging of source  and destination IP addresses and ports 
+- It's common on public and authenticated wireless networks to have a high level of logging of source and destination IP addresses and ports 
 - Email often contains information regarding sending IP addresses and times in header information
 
-### Example email header from  https://www.guerrillamail.com
+### Example email header from https://www.guerrillamail.com
 
 This is an example of a guerrillamail.com email header, with the destination email address and server obfuscated. Note that the service provides an additional header `X-Originating-IP: [72.52.75.27]` to provide a way of tracking abuse.
 
@@ -184,10 +181,10 @@ Return-path: <djajppp+fku4n0@guerrillamail.com>
 Envelope-to: xxxxxxx@example.org
 Delivery-date: Sat, 27 Dec 2014 18:19:40 +0000
 Received: from mail.guerrillamail.com ([198.143.169.10] helo=guerrillamail.com)
-        by mx.example.org with esmtp (Exim 4.80)
-        (envelope-from <djajppp+fku4n0@guerrillamail.com>)
-        id 1Y4vxj-0002LQ-1U
-        for xxxxxxx@example.org; Sat, 27 Dec 2014 18:19:40 +0000 
+    by mx.example.org with esmtp (Exim 4.80)
+    (envelope-from <djajppp+fku4n0@guerrillamail.com>)
+    id 1Y4vxj-0002LQ-1U
+    for xxxxxxx@example.org; Sat, 27 Dec 2014 18:19:40 +0000 
 Received: by 198.143.169.10 with HTTP; Sat, 27 Dec 2014 18:18:59 +0000
 MIME-Version: 1.0
 Message-ID: <94ee9dcba5ba1570d400693e9e61b42a567@guerrillamail.com>
@@ -204,9 +201,9 @@ The Tor project provides the **exoneraTor**[^harvard-exonerator] service, which 
 
 <https://exonerator.torproject.org/?timestamp=2014-12-27&ip=72.52.75.27&targetaddr=198.143.169.10&targetport=80#exit>
 
-Given that the email was sent from a Tor client, Harvard university network administrators could look at the outgoing traffic logs, and determine if any users had accessed the Tor network at the time that the message was sent.  A current consensus can be downloaded from a Tor directory authority, and this can be simply parsed to generate a list of all known Tor relays.  For example <http://193.23.244.244/tor/status-vote/current/consensus>. Traffic logs can be searched for outgoing connections to IP addresses in the Tor network.
+Given that the email was sent from a Tor client, Harvard university network administrators could look at the outgoing traffic logs, and determine if any users had accessed the Tor network at the time that the message was sent. A current consensus can be downloaded from a Tor directory authority, and this can be simply parsed to generate a list of all known Tor relays. For example <http://193.23.244.244/tor/status-vote/current/consensus>. Traffic logs can be searched for outgoing connections to IP addresses in the Tor network.
 
-It is possible that the network administrators had already automated the process of logging traffic to the Tor network.  A small bash shell script, run from a cron job, could automatically generate Snort rules.  For example: 
+It is possible that the network administrators had already automated the process of logging traffic to the Tor network. A small bash shell script, run from a cron job, could automatically generate Snort rules. For example: 
 
 ~~~~~~~
 
@@ -216,7 +213,7 @@ uniq | xargs -i{} echo 'alert tcp any any ->' {}
 
 ~~~~~~~
 
-which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic.  They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users, and been able to correlate the outgoing traffic with the email header timings.
+which would have simplified the task for the Network Administrators, as they would already have logs of the required outgoing traffic. They could have matched hosts who accessed the Tor network with other logs, such as DHCP logs, RADIUS logs, to identify the possible users, and been able to correlate the outgoing traffic with the email header timings.
 
 After gathering a list of possible suspects on campus, it's likely that ordinary policing techniques, will have caused the suspect to confess to the act.
 
@@ -225,15 +222,15 @@ After gathering a list of possible suspects on campus, it's likely that ordinary
 In this case the poor operational security and unsophistication of the user made it simple for law enforcement to identify him.
 
 - Using the Harvard network to attack it.
-    - This allowed timing information to be correlated and identify the subject
+  - This allowed timing information to be correlated and identify the subject
 - Not scheduling the delivery of the email.
-    - This again allowed timing information to correlated.
+  - This again allowed timing information to correlated.
 
 ## Relay Early 
 
 The Tor network protocol defines two message types "RELAY" and "RELAY_EARLY" to control message flow.
 
-In July 2014 the Tor project discovered[^relay-early-1] that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories.  The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for Hidden Services.  
+In July 2014 the Tor project discovered[^relay-early-1] that from January 30 2014, an attacker had signed up a large number of nodes. These nodes were stable and fast enough to become Entry Guards and Hidden Service Directories. The Hidden Service Directories inserted a specific coded sequence of RELAY and RELAY_EARLY messages into responses for requests for Hidden Services. 
 
 If a user looking to access a Hidden Service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deanonymise the users of a Hidden Service.
 
@@ -246,7 +243,7 @@ If a user looking to access a Hidden Service, was both using an attackers Guard 
 
 ## Operation Onymous / Silk Road 2
 
-Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down.  This included a site known as the "Silk Road 2".  The exact number of sites and services that were taken down varies.  The initial reports mention over 400 Hidden Services[^onymous-1], but later analysis[^onymous-2] suggests smaller numbers.
+Over the 5/6th November 2014 many hidden sites acting as online marketplaces were shut down. This included a site known as the "Silk Road 2". The exact number of sites and services that were taken down varies. The initial reports mention over 400 Hidden Services[^onymous-1], but later analysis[^onymous-2] suggests smaller numbers.
 
 ### Silk Road 2
 
@@ -255,9 +252,9 @@ In the FBI complaint[^onymous-3] against Blake Benthall we learn that
 - Undercover police work had placed an operator on the administrative staff.
 - Servers were rented with email addresses that linked directly back to Benthall.
 - Benthall did not use Tor client to access parts of the site
-    - Undercover police were able to manage forum software for the site and were able to correlate site users with IP addresses and browser user agent information.
+  - Undercover police were able to manage forum software for the site and were able to correlate site users with IP addresses and browser user agent information.
 
-How the server was located is not described in the document.  The Tor project[^onymous-4] and others[^onymous-5] have suggested that the RELAY EARLY attack was used to locate hidden services.
+How the server was located is not described in the document. The Tor project[^onymous-4] and others[^onymous-5] have suggested that the RELAY EARLY attack was used to locate hidden services.
 
 ### Other sites
 
@@ -265,7 +262,7 @@ Again direct information is not available, but several techniques can be applied
 
 - A virtual private server provider can search through the disk images it has looking for files and directories required by Tor Hidden Services. 
 - If an attacker controls the Hidden Service Guard Node, they can perform traffic confirmation attacks on the Hidden Service.
-    - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
+  - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
 - The Relay Early attack from 30th January 2014 could have mapped Hidden Services
 - Attacks on the Hidden Service's software, e.g. MySQL injection or remote file inclusion/execution
 
@@ -274,7 +271,7 @@ With several simultaneous shutdowns of Hidden Services it's likely that there wa
 
 ## Conclusion 
 
-Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems. The Tor network was not designed to work against an adversary of global passive scope.  However it still provides significant effort for users to be deanonymised. 
+Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems. The Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
 
 Client who wish to remain anonymous should 
 
@@ -289,10 +286,10 @@ Hidden Services operators should make sure that they have good operational secur
 - Maintain some separation between billing details and user identifiable information.
 - Servers and systems should be configured to maintain minimal logging.
 - The operating system and related components of the Hidden Services should run secure and managed code, so that they don't provide identifying information. 
-    - Debug statements should not be left in live code. 
+  - Debug statements should not be left in live code. 
 - Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
-Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users.  
+Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users. 
 
 The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
 
@@ -304,6 +301,7 @@ The practical attacks that are best documented are by law enforcement against cr
 [^tor1]: <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network> 
 [^tor2]: <https://news.ycombinator.com/item?id=8774833>
 
+[^tor-31c3-2]: <http://media.ccc.de/browse/congress/2014/31c3_-_6112_-_en_-_saal_2_-_201412301715_-_tor_hidden_services_and_deanonymisation_-_dr_gareth_owen.html#video>
 
 [^tor-firefox]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
 [^tor-owen1]: <https://ghowen.me/fbi-tor-malware-analysis/>
