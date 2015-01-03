@@ -286,7 +286,9 @@ Hidden Services operators should make sure that they have good operational secur
     - Debug statements should not be left in live code. 
 - Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
-Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users.  The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
+Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users.  
+
+The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
 
 
 [^torspec-1]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n129>
