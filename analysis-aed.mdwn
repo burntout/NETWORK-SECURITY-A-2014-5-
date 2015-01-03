@@ -12,7 +12,7 @@ Tor is a low latency anonymisation and privacy platform for network traffic[^tor
 
 # The Tor Protocol
 
-The Tor client, known as a an Onion Proxy (OP) bootstraps itself at startup. This involves the following stages:- 
+The Tor client, known as a an Onion Proxy (OP) creates several circuits at startup. This is described in detail in the Tor Protocol Specification[^tor-spec-2]
 
 - The OP contacts the Tor Directory Authorities (DA), and downloads a list of the currently available Tor relays (OR) together with their exit node policies, public keys and other information.  
 - The OP selects an exit node, that is suitable for the traffic it wants to send.
@@ -292,7 +292,7 @@ The practical attacks that are best documented are by law enforcement against cr
 
 
 [^torspec-1]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n129>
-
+[^torspec-2]: <https://gitweb.torproject.org/torspec.git/tree/tor-spec.txt#n1021>
 
 [^tor1]: <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network> 
 [^tor2]: <https://news.ycombinator.com/item?id=8774833>
