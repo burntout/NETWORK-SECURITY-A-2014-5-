@@ -147,9 +147,9 @@ Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Sil
 The FBI complaint[^silkroad-fbi] that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
 - IP addresses of commercial VPN providers coded into the marketplace application. 
-  - The commercial VPN provider provided subscriber information to law enforcement
+    - The commercial VPN provider provided subscriber information to law enforcement
 - SSH public keys
-  - Public keys often contain information about the machine they were created on.
+    - Public keys often contain information about the machine they were created on.
 
 Additionally circumstantial historical evidence around the initial marketing, code development, and social media profiles were used to link Ulbricht with the adminstrator of the Silk Road.
 
