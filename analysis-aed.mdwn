@@ -222,9 +222,9 @@ After gathering a list of possible suspects on campus, it's likely that ordinary
 In this case the poor operational security and unsophistication of the user made it simple for law enforcement to identify him.
 
 - Using the Harvard network to attack it.
-  - This allowed timing information to be correlated and identify the subject
+    - This allowed timing information to be correlated and identify the subject
 - Not scheduling the delivery of the email.
-  - This again allowed timing information to correlated.
+    - This again allowed timing information to correlated.
 
 ## Relay Early 
 
