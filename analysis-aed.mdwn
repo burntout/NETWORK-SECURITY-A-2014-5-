@@ -125,7 +125,7 @@ This data recorded is typical of a law enforcement CIPAV ( Computer Internet Pro
 
 Evidence has since come out that the NSA helped develop this attack under the codename "EgotisticalGiraffe"[^tor-nsa1]
 
-### Prevention of deanonymisation
+### Prevention of Deanonymisation
 
 Various steps would have prevented users from being deanonymised were noted in the Tor security advisory[^tor-firefox], these include. 
 
@@ -157,7 +157,7 @@ The FBI later revealed how they deanonymised the Silk Road server[^silkroad-fbi-
 
 The FBI arranged for the machine to be imaged and the image forensically examined. This revealed VPN provider addresses, where subscriber information could be gathered, and traffic correlation data which eventually lead to the arrest of Ulbricht and takedown of the site.
 
-### Prevention of deanonymisation
+### Prevention of Deanonymisation
 
 The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
@@ -217,7 +217,7 @@ which would have simplified the task for the Network Administrators, as they wou
 
 After gathering a list of possible suspects on campus, it's likely that ordinary policing techniques, will have caused the suspect to confess to the act.
 
-### Prevention of deanonymisation
+### Prevention of Deanonymisation
 
 In this case the poor operational security and unsophistication of the user made it simple for law enforcement to identify him.
 
@@ -234,7 +234,7 @@ In July 2014 the Tor project discovered[^relay-early-1] that from January 30 201
 
 If a user looking to access a Hidden Service, was both using an attackers Guard Node and Hidden Service Directory, then the attacker could correlate the pattern of RELAY,RELAY_EARLY messages to deanonymise the users of a Hidden Service.
 
-### Prevention of deanonymisation
+### Prevention of Deanonymisation
 
 - The Tor network removed the attacking relays from the system
 - They released a software update that prevented the RELAY_EARLY cells being used in this way
