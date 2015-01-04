@@ -91,7 +91,7 @@ There are a number of attacks that against Hidden Services and their users. Thes
 
 ### Enumeration of Hidden Services.
 
-An attacker can run a Hidden Service Directory, and thus gain a partial knowledge of the available number of Hidden Services and their onion addresses. By counting how often requests for information about these services it's possible for an attacker to gather information on which services are most popular. 
+An attacker can run a Hidden Service Directory, and thus gain a partial knowledge of the available number of Hidden Services and their onion addresses. By counting how often requests for information about these services arrive it's possible for an attacker to gather information on service popularity. However due to the anonymous nature of Tor, it's difficult to tell whether the requestors are Humans or automated bots. 
 
 ### Hidden Service Guard Nodes.
 
