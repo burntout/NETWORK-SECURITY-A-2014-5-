@@ -37,9 +37,9 @@ Examples of unauthenticated traffic would include browsing over http, the use of
 
 ## Correlation Attacks
 
-If an attacker can track data entering and exiting the Tor network they can use the correlate the timing of data packets to deanonymise users. For example an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a guard node ( entrance ) and exit node. The Tor protocol attempts to prevent this in several ways.
+If an attacker can track data entering and exiting the Tor network they can correlate the timing of data packets to deanonymise users. If an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a Guard Bode ( entrance ) and Exit Node, this would be simple to accomplish. The Tor protocol attempts to prevent this in several ways.
 
-- Entrance or guard nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are kept. This limits the level of user profiling.
+- Entrance or Guard Nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are held. This limits the level of user profiling by exposure to evil Guard Nodes.
 - Relays can be organised into "families". Tor users avoid using relays that are in the same family
 - Users avoid relays that are in the same /16 IP subnet 
 
