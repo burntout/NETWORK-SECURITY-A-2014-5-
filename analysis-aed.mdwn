@@ -130,13 +130,13 @@ Evidence has since come out that the NSA helped develop this attack under the co
 Various steps would have prevented users from being deanonymised were noted in the Tor security advisory[^tor-firefox], these include. 
 
 - Using current versions of the Tor Browser Bundle.
-  - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
+    - The vulnerability was fixed in the Tor Browser Bundle released June 26 2013 <https://blog.torproject.org/blog/new-tor-browser-bundles-and-tor-02414-alpha-packages> 
 - Using a firewall or other method that prevented non-torified connections
-  - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix <https://www.whonix.org/> prevent non Tor traffic leaving.
+    - Live CD's such as the TA(I)LS <https://tails.boum.org/> or whonix <https://www.whonix.org/> prevent non Tor traffic leaving.
 - Using a non windows operating system
-  - All Tor clients look similar to each other. They are difficult for network attackers to tell apart. But as most users run Windows operating systems, attacks will most commonly target windows. This attack did exactly that.
+    - All Tor clients look similar to each other. They are difficult for network attackers to tell apart. But as most users run Windows operating systems, attacks will most commonly target windows. This attack did exactly that.
 - Disabling Javascript. 
-  - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default. Disabling javascript would have prevented the code from running, but could affect usability of some web sites.
+    - The Tor Browser Bundle comes with the "no script" plugin, **but** this is disabled by default. Disabling javascript would have prevented the code from running, but could affect usability of some web sites.
 
 ## Silk Road
 
