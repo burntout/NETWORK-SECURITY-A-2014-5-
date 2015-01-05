@@ -65,7 +65,7 @@ Tor Hidden Services allow a service operator to anonymise the location of the se
 
 Hidden services are published as ".onion" addresses. For example Facebook publish <https://facebookcorewwwi.onion>, and the Duckduckgo search engine publishes <http://3g2upl4pq6kufc4m.onion> 
 
-The onion address is an 80 bit hash of the public key associated with the Tor Hidden Service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
+The onion address is an 80 bit hash of the public key associated with the Tor Hidden Service, encoded in a 16 characters base 32 ( [a-z][2-7] ) format[^tor-rend-spec]. As the onion address contains both the public key information as well as the name of the service it both identifies and authenticates the site.
 
 Control of the Hidden Service public/private key pair is equivalent to control of the Hidden Service. If an attacker gets control of the public/private key pair, they can register the Hidden Service for themselves.
 
@@ -80,7 +80,7 @@ The Hidden Service protocol is described in the Tor Rendezvous Specification[^to
 
 When a client wishes to connect to a Hidden Service, it performs several tasks, all across Tor circuits.
 
-1. looks up the IntP's and public key info for the Hidden Service from a HSDir server, and chooses an OR to be a Rendezvous Point (RP)
+1. Looks up the IntP's and public key info for the Hidden Service from a HSDir server, and chooses an OR to be a Rendezvous Point (RP)
 1. Asks the IntP to contact the Hidden Service and tell it the RP
 1. The HS makes a Tor circuit to the RP
 1. The client makes a circuit to the RP
@@ -159,7 +159,7 @@ The FBI arranged for the machine to be imaged and the image forensically examine
 
 ### Prevention of Deanonymisation
 
-The code that ran the Silk Road application had at various times had debug statements left in it that revealed identifying information. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
+The code that ran the Silk Road application had at various times had debug statements or configuration left in it that revealed identifying information[^silkroad-reddit][^silkroad-runasand]. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
 
 
@@ -171,7 +171,7 @@ On 16 December 2013 Harvard University received a bomb threat[^harvard-1] via th
 - It's common on public and authenticated wireless networks to have a high level of logging of source and destination IP addresses and ports 
 - Email often contains information regarding sending IP addresses and times in header information
 
-### Example email header from https://www.guerrillamail.com
+### Example email header from guerrilla mail
 
 This is an example of a guerrillamail.com email header, with the destination email address and server obfuscated. Note that the service provides an additional header `X-Originating-IP: [72.52.75.27]` to provide a way of tracking abuse.
 
@@ -271,16 +271,18 @@ With several simultaneous shutdowns of Hidden Services it's likely that there wa
 
 ## Conclusion 
 
-Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems. The Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
+Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems, and the Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
 
-Client who wish to remain anonymous should 
+Whilst there are technical attacks against the Tor network the protocol continues to evolve to be resistant to them. With the practical attacks we have looked at a full understanding of how they were accomplished is not in the public domain, but there is good evidence that poor operational security and software has a large part to play in deanonymising users. 
 
-- Not run arbitrary code in your Tor browser ( eg. disable java script/flash )
+Client who wish to remain anonymous should at least:
+
+- Not run arbitrary code in your Tor browser ( eg. disable javascript/flash )
 - Use the latest Tor Browser Bundle package
 - Use a dedicated virtual machine or operating system ( eg. Whonix, Tails )
 - Force all traffic to be "torified"
 
-Hidden Services operators should make sure that they have good operational security. 
+Hidden Services operators should make sure that they have good operational security, including:
 
 - They should make sure that they only access and adminstrate the services through the Tor network, avoiding leaking of IP address information.
 - Maintain some separation between billing details and user identifiable information.
@@ -288,8 +290,6 @@ Hidden Services operators should make sure that they have good operational secur
 - The operating system and related components of the Hidden Services should run secure and managed code, so that they don't provide identifying information. 
   - Debug statements should not be left in live code. 
 - Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
-
-Whilst there are technical attacks against the Tor network, and a full understanding of how they were accomplished is not in the public domain, there is good evidence that poor operational security and software has a large part to play in deanonymising users. 
 
 The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
 
@@ -300,6 +300,7 @@ The practical attacks that are best documented are by law enforcement against cr
 
 [^tor1]: <https://blog.torproject.org/blog/possible-upcoming-attempts-disable-tor-network> 
 [^tor2]: <https://news.ycombinator.com/item?id=8774833>
+[^tor-rend-spec]: <https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt#n526>
 
 [^tor-31c3-2]: <http://media.ccc.de/browse/congress/2014/31c3_-_6112_-_en_-_saal_2_-_201412301715_-_tor_hidden_services_and_deanonymisation_-_dr_gareth_owen.html#video>
 
@@ -310,6 +311,8 @@ The practical attacks that are best documented are by law enforcement against cr
 
 [^silkroad-fbi]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
 [^silkroad-fbi-2]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+[^silkroad-reddit]: <http://www.reddit.com/r/SilkRoad/comments/1dmznd/should_we_be_worried_showing_on_login_page/>
+[^silkroad-runasand]: <https://twitter.com/runasand/status/387210004404514817>
 
 
 [^harvard-1]: <http://www.thecrimson.com/article/2013/12/16/unconfirmed-reports-explosives-four-buildings/>
