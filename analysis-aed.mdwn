@@ -269,7 +269,7 @@ Again direct information is not available, but several techniques can be applied
 
 With several simultaneous shutdowns of Hidden Services it's likely that there was a large amount of research and coordination between different law enforcement agencies.
 
-## Conclusion 
+# Conclusion 
 
 Anonymity is hard against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems, and the Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
 
