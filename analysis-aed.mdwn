@@ -251,7 +251,7 @@ In the FBI complaint[^onymous-3] against Blake Benthall we learn that
 
 - Undercover police work had placed an operator on the administrative staff.
 - Servers were rented with email addresses that linked directly back to Benthall.
-- Benthall did not use Tor client to access parts of the site
+- Benthall did not use the Tor client to access parts of the site
   - Undercover police were able to manage forum software for the site and were able to correlate site users with IP addresses and browser user agent information.
 
 How the server was located is not described in the document. The Tor project[^onymous-4] and others[^onymous-5] have suggested that the RELAY EARLY attack was used to locate hidden services.
@@ -262,7 +262,7 @@ Again direct information is not available, but several techniques can be applied
 
 - A virtual private server provider can search through the disk images it has looking for files and directories required by Tor Hidden Services. 
 - If an attacker controls the Hidden Service Guard Node, they can perform traffic confirmation attacks on the Hidden Service.
-  - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
+    - A corrollary to this is that by performing a denial of service attack on a Guard Node, an attacker could force the Hidden Service to select an different Guard Node, until it selects one controlled by the attacker.
 - The Relay Early attack from 30th January 2014 could have mapped Hidden Services
 - Attacks on the Hidden Service's software, e.g. MySQL injection or remote file inclusion/execution
 
@@ -271,7 +271,7 @@ With several simultaneous shutdowns of Hidden Services it's likely that there wa
 
 ## Conclusion 
 
-Anonymity is hard, against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems, and the Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
+Anonymity is hard against a determined adversary. The problem of providing a low latency anonymisation network has a number of unsolved problems, and the Tor network was not designed to work against an adversary of global passive scope. However it still provides significant effort for users to be deanonymised. 
 
 Whilst there are technical attacks against the Tor network the protocol continues to evolve to be resistant to them. With the practical attacks we have looked at a full understanding of how they were accomplished is not in the public domain, but there is good evidence that poor operational security and software has a large part to play in deanonymising users. 
 
@@ -288,7 +288,7 @@ Hidden Services operators should make sure that they have good operational secur
 - Maintain some separation between billing details and user identifiable information.
 - Servers and systems should be configured to maintain minimal logging.
 - The operating system and related components of the Hidden Services should run secure and managed code, so that they don't provide identifying information. 
-  - Debug statements should not be left in live code. 
+    - Debug statements should not be left in live code. 
 - Services can configured to be proxied over private IP addresses so they cannot provide identifying information. When maintenance is performed the services can be decoupled and taken off line.
 
 The practical attacks that are best documented are by law enforcement against criminals, however the techniques in maintaining and protecting anonymity and privacy have use for a wide variety of users.
