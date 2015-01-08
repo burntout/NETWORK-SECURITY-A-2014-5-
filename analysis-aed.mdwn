@@ -87,7 +87,7 @@ When a client wishes to connect to a Hidden Service, it performs several tasks, 
 
 ## Attacks on Tor Hidden Services
 
-There are a number of attacks that against Hidden Services and their users. These are described in Gareth Owens talks at this years Chaos Communication Congress [^tor-31c3-2]
+There are a number of attacks that against Hidden Services and their users. These are most recently described in Gareth Owens talks at this years Chaos Communication Congress [^tor-31c3-2], but also work has been done on these attacks at the University of Luxemberg[^tor-luxemberg-2][^tor-luxemberg]. 
 
 ### Enumeration of Hidden Services.
 
@@ -303,6 +303,8 @@ The practical attacks that are best documented are by law enforcement against cr
 [^tor-rend-spec]: <https://gitweb.torproject.org/torspec.git/tree/rend-spec.txt#n526>
 
 [^tor-31c3-2]: <http://media.ccc.de/browse/congress/2014/31c3_-_6112_-_en_-_saal_2_-_201412301715_-_tor_hidden_services_and_deanonymisation_-_dr_gareth_owen.html#video>
+[^tor-luxemberg]: <https://crypto.stanford.edu/seclab/sem-14-15/stanford-2014.svg> 
+[^tor-luxemberg-2]: <http://www.ieee-security.org/TC/SP2013/papers/4977a080.pdf>
 
 [^tor-firefox]: <https://lists.torproject.org/pipermail/tor-announce/2013-August/000089.html>
 [^tor-owen1]: <https://ghowen.me/fbi-tor-malware-analysis/>
