@@ -20,7 +20,7 @@ The Tor client, known as a an Onion Proxy (OP) creates several circuits at start
 - The OP creates a circuit to the guard node.
 - The OP extends the circuit to the relay, and from there extends it to the exit node.
 
-In this way OP builds a circuit across 3 OR. Each OR is only aware of the previous hop and destination hop. 
+In this way OP builds a circuit across 3 OR. Each OR is only aware of the previous hop and next hop. 
 
 In practice a OP will build several circuits, with various relay and exit nodes, but will keep the same guard node ( entrance ) for extended periods of time.
 
@@ -30,14 +30,14 @@ In practice a OP will build several circuits, with various relay and exit nodes,
 
 If the traffic to/from the destination is not authenticated then an evil exit node can alter the communications. Examples of authenticated traffic are: 
 
-- https traffic with certificate verification. This will provide end to end authentication and encryption of destination to the client
+- https traffic with certificate verification. This will provide end to end authentication and encryption of destination traffic to the client
 - downloading of data that has a cryptographically verifiable signature, where the signature can be verified via a different channel. This would allow the exit node to see the traffic still, but the client would be able securely verify the content. Examples of this would downloading of packages from Windows Update. The exit node would be able see which updates were being downloaded, but an attempt to tamper with them would invalidate cryptographic signatures.
 
 Examples of unauthenticated traffic would include browsing over http, the use of internet relay chat and Window Live Messenger.
 
 ## Correlation Attacks
 
-If an attacker can track data entering and exiting the Tor network they can correlate the timing of data packets to deanonymise users. If an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a Guard Bode ( entrance ) and Exit Node, this would be simple to accomplish. The Tor protocol attempts to prevent this in several ways.
+If an attacker can track data entering and exiting the Tor network they can correlate the timing of data packets to deanonymise users. If an attacker could run enough Tor relays and exit nodes that the user selects the adversary as a Guard Node ( entrance ) and Exit Node, this would be simple to accomplish. The Tor protocol attempts to prevent this in several ways.
 
 - Entrance or Guard Nodes are kept for long periods of time by Tor users. They are initially chosen at random, but they are held. This limits the level of user profiling by exposure to evil Guard Nodes.
 - Relays can be organised into "families". Tor users avoid using relays that are in the same family
