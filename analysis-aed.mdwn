@@ -159,7 +159,7 @@ The FBI arranged for the machine to be imaged and the image forensically examine
 
 ### Prevention of Deanonymisation
 
-The code that ran the Silk Road application had at various times had debug statements or configuration left in it that revealed identifying information[^silkroad-reddit][^silkroad-runasand]. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
+The code that ran the Silk Road application had at various times debug statements or configuration left in it that revealed identifying information[^silkroad-reddit][^silkroad-runasand]. To successfully run a Hidden Service the application and associated stack ( web server, operating system etc ... ) should not reveal any IP addressing information. A simple way to resolve this would be to have the public Hidden Service act as a proxy and forward requests on to a second machine over a private network. The application logic runs on the second machine, and any failure in that would only return a private IP address.
 
 
 
