@@ -106,7 +106,7 @@ An attacker can arrange to become a Hidden Service Directory. If the attacker is
 
 ## Freedom Hosting August-September 2013
 
-"Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting. It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down used to deliver exploits to their users.
+"Freedom hosting" was a service provider offering turnkey Tor Hidden Service hosting. The company had achieved some notoriety in 2011 when Anonymous had attacked some Freedom Hosting sites for hosting child pornography. On 29 July 2013, Freedom Hosting's owner, Eric Eioan Marques, was arrested by the FBI on charges relating to the distribution of child pornography. Shortly afterwards in early August 2013 a large number of those Tor Hidden Services stopped serving their usual content, and instead started providing a web page saying they were down for maintenance. However, the maintenance web page had an embedded piece of Javascript, that exploited a vulnerability in versions of Firefox in old versions of the Tor Browser Bundle. It appears that all these sites were provided by Freedom Hosting. It is worth noting that not all sites hosted by Freedom Hosting were criminal, however all were taken down and used to deliver exploits to their users.
 
 The security announcement to the Tor-announce mailing lists[^tor-firefox] details the discovery of the deanonymisation attack.
 
@@ -142,7 +142,7 @@ Various steps would have prevented users from being deanonymised were noted in t
 
 The Silk Road was a Tor Hidden Service that provided an online market place for illegal drugs. It made use of bitcoins for payment and Tor Hidden Services to provide anonymity for the operator.
 
-Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 time the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
+Ross Ulbricht was arrested on 1 October 2013, and on 2 October 2013 the Silk Road Hidden Service started showing a image from the FBI warning visitors that the site had been shutdown. 
 
 The FBI complaint[^silkroad-fbi] that resulted in the arrest of Ulbricht does not contain information over how the Silk Road Marketplace Server was located, however it does contain much information from the Silk Road Markeplace server that links Ulbricht to the Silk Road, including...
 
