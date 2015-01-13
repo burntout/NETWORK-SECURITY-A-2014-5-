@@ -311,8 +311,8 @@ The practical attacks that are best documented are by law enforcement against cr
 [^tor-nsa1]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
 
 
-[^silkroad-fbi]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
-[^silkroad-fbi-2]: <http://www.theguardian.com/world/interactive/2013/oct/04/egotistical-giraffe-nsa-tor-document>
+[^silkroad-fbi]: <https://www.cs.columbia.edu/~smb/UlbrichtCriminalComplaint.pdf>
+[^silkroad-fbi-2]: <http://ia700603.us.archive.org/21/items/gov.uscourts.nysd.422824/gov.uscourts.nysd.422824.57.0.pdf>
 [^silkroad-reddit]: <http://www.reddit.com/r/SilkRoad/comments/1dmznd/should_we_be_worried_showing_on_login_page/>
 [^silkroad-runasand]: <https://twitter.com/runasand/status/387210004404514817>
 
